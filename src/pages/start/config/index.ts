@@ -23,4 +23,5 @@ export const footerLinks = [
   "Developers",
   "Directory",
   "Settings",
+  "© 2021 Twitter, Inc.",
 ];
