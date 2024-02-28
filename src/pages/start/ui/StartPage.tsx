@@ -1,12 +1,19 @@
 import twitterImage from "@/shared/assets/OnBoardImage.png";
 
 import { Footer } from "./Footer";
+import { RightSection } from "./RightSection";
 
 export const StartPage = () => {
   return (
-    <div className=" max-h-80">
-      <img src={twitterImage} width="300" height="300" alt="" />
-      <span className=" text-red-300"></span>
+    <div className="h-[100vh]">
+      <div className="flex max-h-[90%] items-center">
+        <img
+          src={twitterImage}
+          className="max-w-[50%] object-contain mr-10"
+          alt="twitter-image"
+        />
+        <RightSection />
+      </div>
       <Footer />
     </div>
   );

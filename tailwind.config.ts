@@ -14,7 +14,11 @@ export default {
       "3xl": "42px",
       "4xl": "84px",
     },
-    extend: {},
+    extend: {
+      colors: {
+        primary: "#1DA1F2",
+      },
+    },
   },
   plugins: [],
 };
