@@ -4,7 +4,7 @@ import { createBrowserRouter, Navigate } from "react-router-dom";
 import { StartPage } from "@/pages/start";
 import { ROUTES } from "@/shared/const/routes";
 import { useAppSelector } from "@/shared/model/hooks";
-import { RegistrationPage, SignUpPage } from "@/pages/registration";
+import { RegistrationPage } from "@/pages/registration";
 
 interface IGuardProps {
   children: ReactElement;

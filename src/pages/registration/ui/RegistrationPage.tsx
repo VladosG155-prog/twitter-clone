@@ -1,3 +1,9 @@
+import { RegistrationForm } from "@/features/authentication/registration/ui/RegistrationForm";
+
 export const RegistrationPage = () => {
-  return <div>SignUpPage</div>;
+  return (
+    <div>
+      <RegistrationForm />
+    </div>
+  );
 };

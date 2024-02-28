@@ -7,6 +7,7 @@ export const Button: FC<IButtonProps> = ({
   text,
   className,
   icon,
+  type,
   variant = "primary",
   ...props
 }) => {
@@ -18,9 +19,10 @@ export const Button: FC<IButtonProps> = ({
         className,
         {
           "border-gray-300 border": variant === "outlined",
+          "bg-primary": variant === "primary",
         }
       )}
-      type="button"
+      type={type}
     >
       {icon && <i className="w-[16px] h-[16px] mr-1">{icon}</i>}
       <span className="font-roboto font-medium ">{text}</span>
