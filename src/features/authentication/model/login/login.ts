@@ -1,24 +1,22 @@
 import { PayloadAction } from "@reduxjs/toolkit";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { User } from "firebase/auth";
 import { call, put, takeEvery } from "redux-saga/effects";
 
 import { sessionSlice } from "@/entities/session";
 import { LOGIN } from "@/entities/session/model/actions";
-import { auth } from "@/shared/api/firebase/instance";
 
-const loginUser = async (email: string, password: string) => {
-  const res = await signInWithEmailAndPassword(auth, email, password);
-  return res;
-};
+import { loginUser } from "../../api/loginUser";
 
 export function* login(
   data: PayloadAction<{ email: string; password: string }>
-): Generator {
+) {
   try {
+    const { email, password } = data.payload;
     yield put(sessionSlice.actions.userLoading(true));
-    const f = yield call(loginUser, data.payload.email, data.payload.password);
+    const user: User = yield call(loginUser, email, password);
+    yield put(sessionSlice.actions.setUser(user));
     yield put(sessionSlice.actions.userLoading(false));
-    console.log("f", f);
+    console.log("f", user);
   } catch (error) {
     console.error("error", error);
   }

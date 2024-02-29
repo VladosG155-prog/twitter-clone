@@ -12,7 +12,7 @@ interface IGuardProps {
 }
 
 const GuestGuard = ({ children }: IGuardProps) => {
-  const isAuthorized = useAppSelector((state) => state.global.user);
+  const isAuthorized = useAppSelector((state) => state.session.user);
 
   if (!isAuthorized) return <Navigate to={ROUTES.AUTH} />;
 
@@ -20,9 +20,9 @@ const GuestGuard = ({ children }: IGuardProps) => {
 };
 
 const AuthGuard = ({ children }: IGuardProps) => {
-  const isAuthorized = useAppSelector((state) => state.global.user);
+  const isAuthorized = useAppSelector((state) => state.session.user);
 
-  if (isAuthorized) return <Navigate to={ROUTES.BASE} />;
+  if (isAuthorized) return <Navigate to={ROUTES.HOME} />;
 
   return children;
 };
@@ -30,11 +30,26 @@ const AuthGuard = ({ children }: IGuardProps) => {
 export const appRouter = createBrowserRouter([
   {
     path: ROUTES.BASE,
-    element: <StartPage />,
+    element: (
+      <AuthGuard>
+        <StartPage />
+      </AuthGuard>
+    ),
   },
   {
     path: ROUTES.REGISTRATION,
-    element: <RegistrationPage />,
+    element: (
+      <AuthGuard>
+        <RegistrationPage />
+      </AuthGuard>
+    ),
   },
-  { path: ROUTES.AUTH, element: <LoginPage /> },
+  {
+    path: ROUTES.AUTH,
+    element: (
+      <AuthGuard>
+        <LoginPage />
+      </AuthGuard>
+    ),
+  },
 ]);

@@ -2,7 +2,8 @@ import { configureStore } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
 
 import { sessionSlice } from "@/entities/session";
-import { watchRegistraion } from "@/features/authentication/model/registration/registration";
+
+import rootSaga from "./rootSaga";
 
 const sagaMiddleWare = createSagaMiddleware();
 
@@ -11,10 +12,10 @@ export const store = configureStore({
     session: sessionSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(sagaMiddleWare),
+    getDefaultMiddleware({ serializableCheck: false }).concat(sagaMiddleWare),
 });
 
-sagaMiddleWare.run(watchRegistraion);
+sagaMiddleWare.run(rootSaga);
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

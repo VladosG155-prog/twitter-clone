@@ -3,10 +3,14 @@ import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import { RouterProvider } from "react-router-dom";
 
+import { ISLOGGEDIN } from "@/entities/session/model/actions.ts";
+
 import { store } from "./store/index.ts";
 import { appRouter } from "./appRouter.tsx";
 
 import "./styles/global.css";
+
+store.dispatch(ISLOGGEDIN());
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

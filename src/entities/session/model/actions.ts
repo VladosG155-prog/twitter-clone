@@ -10,4 +10,6 @@ export const REGISTRATION = createAction<{
 export const LOGIN = createAction<{
   email: string;
   password: string;
-}>("session/REGISTRATION");
+}>("session/LOGIN");
+
+export const ISLOGGEDIN = createAction("session/LOGGEDIN");

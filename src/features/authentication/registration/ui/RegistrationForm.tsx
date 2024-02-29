@@ -1,10 +1,8 @@
-import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { REGISTRATION } from "@/entities/session/model/actions";
-import { ROUTES } from "@/shared/const/routes";
 import { useAppDispatch, useAppSelector } from "@/shared/model/hooks";
 import { Button, Input } from "@/shared/ui";
 
@@ -23,11 +21,6 @@ export const RegistrationForm = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { isLoading } = useAppSelector((state) => state.session);
-
-  useEffect(() => {
-    if (!isLoading) return;
-    navigate(ROUTES.AUTH);
-  }, [isLoading]);
 
   const onSubmit = (data: IRegistrationFormData) => {
     dispatch(REGISTRATION(data));

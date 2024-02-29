@@ -4,7 +4,6 @@ import { IInputProps } from "./interfaces";
 
 export const Input: FC<IInputProps> = (props) => {
   const { value, placeholder, name, error, register } = props;
-  console.log(props);
 
   return (
     <div className="w-full">
