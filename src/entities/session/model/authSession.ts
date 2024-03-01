@@ -1,3 +1,4 @@
+import { redirect } from "react-router-dom";
 import { User } from "firebase/auth";
 import { call, put, takeEvery } from "redux-saga/effects";
 
@@ -8,10 +9,13 @@ import { checkUserSession } from "../api/checkUserSession";
 
 export function* isLoggedIn() {
   try {
+    yield put(sessionSlice.actions.userLoading(true));
     const user: User = yield call(checkUserSession);
-    console.log("user", user);
 
     yield put(sessionSlice.actions.setUser(user));
+
+    yield put(sessionSlice.actions.userLoading(false));
+    redirect("/feed");
   } catch (error) {
     console.error(error);
   }

@@ -1,15 +1,21 @@
 import { Link, useNavigate } from "react-router-dom";
 
+import { LOGINGOOGLE } from "@/entities/session/model/actions";
 import GoogleIcon from "@/shared/assets/icons/google.svg?react";
 import TwitterIcon from "@/shared/assets/icons/twitter.svg?react";
 import { ROUTES } from "@/shared/const/routes";
+import { useAppDispatch } from "@/shared/model/hooks";
 import { Button } from "@/shared/ui/";
 
 export const RightSection = () => {
   const navigate = useNavigate();
-
+  const dispatch = useAppDispatch();
   const handleSignUpEmailClick = () => {
     navigate(ROUTES.REGISTRATION);
+  };
+
+  const handleClickSignInGoogle = () => {
+    dispatch(LOGINGOOGLE());
   };
 
   return (
@@ -23,6 +29,7 @@ export const RightSection = () => {
         icon={<GoogleIcon />}
         text="Sign up with Google"
         variant="outlined"
+        onClick={handleClickSignInGoogle}
         className="w-[400px]"
       />
       <Button

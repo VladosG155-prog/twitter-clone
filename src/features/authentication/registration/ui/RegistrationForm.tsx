@@ -19,7 +19,6 @@ export const RegistrationForm = () => {
   });
 
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
   const { isLoading } = useAppSelector((state) => state.session);
 
   const onSubmit = (data: IRegistrationFormData) => {

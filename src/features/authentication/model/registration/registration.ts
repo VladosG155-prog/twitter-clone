@@ -1,10 +1,12 @@
 import { PayloadAction } from "@reduxjs/toolkit";
+import { User } from "firebase/auth";
 import { call, put, takeEvery } from "redux-saga/effects";
 
 import { sessionSlice } from "@/entities/session";
-import { REGISTRATION } from "@/entities/session/model/actions";
+import { LOGINGOOGLE, REGISTRATION } from "@/entities/session/model/actions";
 
 import { createUser } from "../../api/createUser";
+import { googleAuth } from "../../api/googleAuth";
 import { IRegistrationFormData } from "../interfaces";
 
 export function* registration(
@@ -21,6 +23,17 @@ export function* registration(
   }
 }
 
+export function* googleRegistration() {
+  try {
+    const user: User = yield call(googleAuth);
+
+    yield put(sessionSlice.actions.setUser(user));
+  } catch (error) {
+    console.error("error", error);
+  }
+}
+
 export function* watchRegistraion() {
   yield takeEvery(REGISTRATION, registration);
+  yield takeEvery(LOGINGOOGLE, googleRegistration);
 }

@@ -13,3 +13,5 @@ export const LOGIN = createAction<{
 }>("session/LOGIN");
 
 export const ISLOGGEDIN = createAction("session/LOGGEDIN");
+
+export const LOGINGOOGLE = createAction("session/LOGINGOOGLE");
