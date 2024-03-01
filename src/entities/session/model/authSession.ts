@@ -17,6 +17,7 @@ export function* isLoggedIn() {
     yield put(sessionSlice.actions.userLoading(false));
     redirect("/feed");
   } catch (error) {
+    yield put(sessionSlice.actions.userLoading(false));
     console.error(error);
   }
 }

@@ -5,6 +5,9 @@ export interface IRegistrationFormData extends FieldValues {
   email: string;
   tel: string;
   password: string;
+  month: string;
+  year: string;
+  day: string;
 }
 
 export interface IAuthFormData extends FieldValues {

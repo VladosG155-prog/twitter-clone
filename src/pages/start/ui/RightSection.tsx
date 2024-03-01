@@ -40,15 +40,15 @@ export const RightSection = () => {
       />
       <p>
         By singing up you agree to the{" "}
-        <Link className="text-primary hover:opacity-65" to="/">
+        <Link className="text-primary hover:opacity-65" to={ROUTES.BASE}>
           Terms of Service
         </Link>{" "}
         and{" "}
-        <Link className="text-primary hover:opacity-65" to="/">
+        <Link className="text-primary hover:opacity-65" to={ROUTES.BASE}>
           Privacy Policy
         </Link>
         , including{" "}
-        <Link className="text-primary hover:opacity-65" to="/">
+        <Link className="text-primary hover:opacity-65" to={ROUTES.BASE}>
           Cookie Use
         </Link>
         .

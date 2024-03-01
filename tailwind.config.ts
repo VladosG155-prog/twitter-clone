@@ -7,13 +7,13 @@ export default {
       robotoSerif: ["Roboto-serif", "sans-serif"],
     },
     fontSize: {
-      sm: "13px",
-      base: "16px",
-      xl: "18px",
-      "1.5xl": "20px",
-      "2xl": "30px",
-      "3xl": "42px",
-      "4xl": "84px",
+      sm: "0.8125rem",
+      base: "1rem",
+      xl: "1.125rem",
+      "1.5xl": "1.25rem",
+      "2xl": "1.875rem",
+      "3xl": "2.625rem",
+      "4xl": "5.25rem",
     },
     extend: {
       colors: {

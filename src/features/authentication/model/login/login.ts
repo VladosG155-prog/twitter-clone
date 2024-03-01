@@ -18,6 +18,7 @@ export function* login(
     yield put(sessionSlice.actions.userLoading(false));
     console.log("f", user);
   } catch (error) {
+    yield put(sessionSlice.actions.userLoading(false));
     console.error("error", error);
   }
 }

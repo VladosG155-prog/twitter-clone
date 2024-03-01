@@ -1,7 +1,6 @@
 import { InputHTMLAttributes } from "react";
-export interface IInputProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, "onChange"> {
+import { FieldError } from "react-hook-form";
+export interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
-  error?: string;
-  register?: any;
+  error?: FieldError;
 }

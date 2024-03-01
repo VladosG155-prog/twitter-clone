@@ -1,5 +1,8 @@
+import { Link } from "react-router-dom";
+
 import { LoginForm } from "@/features/authentication/login/ui/LoginForm";
 import TwitterIcon from "@/shared/assets/icons/twitter.svg?react";
+import { ROUTES } from "@/shared/const/routes";
 
 export const LoginPage = () => {
   return (
@@ -9,6 +12,9 @@ export const LoginPage = () => {
         Log in to Twitter
       </h1>
       <LoginForm />
+      <Link className="text-primary hover:opacity-65 self-end" to={ROUTES.BASE}>
+        Sign up to Twitter
+      </Link>
     </div>
   );
 };

@@ -11,4 +11,7 @@ export const RegistrationScheme: ZodType<IRegistrationFormData> = z.object({
   name: z.string().min(3, "name should contain more than 3 characters"),
   tel: z.string().regex(phoneRegex, "Invalid phone number"),
   password: z.string().min(3),
+  month: z.string(),
+  year: z.string(),
+  day: z.string(),
 });

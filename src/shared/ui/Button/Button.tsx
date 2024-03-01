@@ -15,7 +15,7 @@ export const Button: FC<IButtonProps> = ({
     <button
       {...props}
       className={cn(
-        "py-4 rounded-full flex justify-center mb-5 items-center w-full",
+        "py-3 rounded-full flex justify-center mb-5 items-center w-full",
         className,
         {
           "border-gray-300 border": variant === "outlined",
