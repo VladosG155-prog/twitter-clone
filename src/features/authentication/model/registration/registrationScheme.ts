@@ -8,7 +8,7 @@ const phoneRegex = new RegExp(
 
 export const RegistrationScheme: ZodType<IRegistrationFormData> = z.object({
   email: z.string().email().min(10),
-  name: z.string().min(3, "name should contain more than 3 characters"),
+  name: z.string().min(1, "name should be exist"),
   tel: z.string().regex(phoneRegex, "Invalid phone number"),
   password: z.string().min(3),
   month: z.string(),

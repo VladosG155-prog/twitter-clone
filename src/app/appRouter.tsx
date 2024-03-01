@@ -1,11 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
 
 import { FeedPage } from "@/pages/feed/ui/FeedPage";
+import { HomePage } from "@/pages/home/ui/HomePage";
 import { LoginPage } from "@/pages/login/ui/LoginPage";
 import { RegistrationPage } from "@/pages/registration";
 import { StartPage } from "@/pages/start";
 import { ROUTES } from "@/shared/const/routes";
 
+import { BaseLayout } from "./layouts/baseLayout";
 import { AuthGuard, GuestGuard } from "./guards";
 
 export const appRouter = createBrowserRouter([
@@ -34,11 +36,25 @@ export const appRouter = createBrowserRouter([
     ),
   },
   {
-    path: ROUTES.FEED,
-    element: (
-      <GuestGuard>
-        <FeedPage />
-      </GuestGuard>
-    ),
+    element: <BaseLayout />,
+    children: [
+      {
+        index: true,
+        path: ROUTES.FEED,
+        element: (
+          <GuestGuard>
+            <FeedPage />
+          </GuestGuard>
+        ),
+      },
+      {
+        path: ROUTES.HOME,
+        element: (
+          <GuestGuard>
+            <HomePage />
+          </GuestGuard>
+        ),
+      },
+    ],
   },
 ]);

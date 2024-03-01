@@ -28,9 +28,9 @@ export const Select: FC<ISelectProps> = (props) => {
     >
       <input
         type="text"
-        disabled
-        className="text-xl cursor-pointer h-full w-full rounded-sm outline-none"
+        className="text-xl cursor-pointer caret-transparent h-full w-full rounded-sm outline-none"
         value={active?.label || value}
+        onChange={() => null}
         placeholder={placeholder}
       />
       <i className="absolute right-2 top-[50%] ">
