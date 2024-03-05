@@ -1,6 +1,6 @@
 export const ROUTES = {
   BASE: "/",
-  FEED: "/feed",
+  PROFILE: "/profile",
   AUTH: "/auth",
   HOME: "/home",
   REGISTRATION: "/registration",

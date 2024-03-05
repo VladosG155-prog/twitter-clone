@@ -37,13 +37,19 @@ export const Select: FC<ISelectProps> = (props) => {
         <AngleDown className="color-gray-500" />
       </i>
       {isOpenOptions && (
-        <div className="absolute w-full left-0 cursor-pointer top-16 bg-white border-gray-400 border">
-          {options.map((option) => (
+        <div className="absolute w-full transition-all max-h-40 overflow-auto left-0 cursor-pointer top-16 bg-white border-gray-400 border">
+          {options.map(({ value, label }) => (
             <p
-              className="p-3 hover:bg-primary hover:text-white cursor-pointer"
-              onClick={handleChangeSelect(option.value)}
+              className={cn(
+                "p-3 hover:bg-primary hover:text-white cursor-pointer",
+                {
+                  "bg-primary text-white": active?.value === value,
+                }
+              )}
+              key={value + label}
+              onClick={handleChangeSelect(value)}
             >
-              {option.label}
+              {label}
             </p>
           ))}
         </div>

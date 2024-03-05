@@ -6,11 +6,6 @@ export default defineConfig({
   define: {
     "process.env": process.env,
   },
-  server: {
-    fs: {
-      cachedChecks: false,
-    },
-  },
   plugins: [
     tsconfigPaths(),
     react(),

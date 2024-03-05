@@ -1,4 +1,5 @@
 import { forwardRef } from "react";
+import cn from "classnames";
 
 import { IInputProps } from "./interfaces";
 
@@ -8,7 +9,12 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>((props) => {
   return (
     <div className="w-full">
       <input
-        className="w-full border-gray-300 border-2 pl-5 rounded-md mb-3 h-[60px]"
+        className={cn(
+          "w-full border-gray-300 border-2 pl-5 rounded-md mb-3 h-[60px]",
+          {
+            "border-red-400": error,
+          }
+        )}
         placeholder={placeholder}
         {...props}
       />

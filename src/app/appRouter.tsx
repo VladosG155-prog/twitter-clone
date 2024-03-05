@@ -1,8 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 
-import { FeedPage } from "@/pages/feed/ui/FeedPage";
 import { HomePage } from "@/pages/home/ui/HomePage";
 import { LoginPage } from "@/pages/login/ui/LoginPage";
+import { ProfilePage } from "@/pages/profile/ui/ProfliePage";
 import { RegistrationPage } from "@/pages/registration";
 import { StartPage } from "@/pages/start";
 import { ROUTES } from "@/shared/const/routes";
@@ -40,10 +40,11 @@ export const appRouter = createBrowserRouter([
     children: [
       {
         index: true,
-        path: ROUTES.FEED,
+        path: ROUTES.PROFILE,
+
         element: (
           <GuestGuard>
-            <FeedPage />
+            <ProfilePage />
           </GuestGuard>
         ),
       },

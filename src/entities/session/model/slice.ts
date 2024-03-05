@@ -2,12 +2,11 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { User } from "firebase/auth";
 
 interface IState {
-  user: User | null;
+  user?: User | null;
   isLoading: boolean;
 }
 
 const initialState: IState = {
-  user: null,
   isLoading: false,
 };
 
@@ -18,8 +17,14 @@ export const sessionSlice = createSlice({
     userLoading: (state, action) => {
       state.isLoading = action.payload;
     },
-    setUser: (state, action: PayloadAction<User>) => {
+    setUser: (state, action: PayloadAction<User | null>) => {
       state.user = action.payload;
     },
   },
+  selectors: {
+    selectUser: (state) => state.user,
+    selectSession: (state) => state,
+  },
 });
+
+export const { selectUser, selectSession } = sessionSlice.selectors;

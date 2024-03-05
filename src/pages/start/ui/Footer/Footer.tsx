@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import { footerLinks } from "../config";
+import { footerLinks } from "../../config";
 
 export const Footer = () => {
   return (

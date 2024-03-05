@@ -5,8 +5,8 @@ import { LOGIN } from "@/entities/session/model/actions";
 import { useAppDispatch, useAppSelector } from "@/shared/model/hooks";
 import { Button, Input } from "@/shared/ui";
 
-import { IAuthFormData } from "../../model/interfaces";
-import { LoginScheme } from "../../model/login/loginScheme";
+import { IAuthFormData } from "../../registration/interfaces";
+import { LoginScheme } from "../model/loginScheme";
 
 export const LoginForm = () => {
   const { handleSubmit, control } = useForm<IAuthFormData>({

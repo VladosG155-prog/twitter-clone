@@ -5,18 +5,18 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { REGISTRATION } from "@/entities/session/model/actions";
 import { ROUTES } from "@/shared/const/routes";
-import { useAppDispatch, useAppSelector } from "@/shared/model/hooks";
+import { useAppDispatch } from "@/shared/model/hooks";
 import { Button, Input } from "@/shared/ui";
 import { Select } from "@/shared/ui/Select/Select";
 
-import { IRegistrationFormData } from "../../model/interfaces";
-import { RegistrationScheme } from "../../model/registration/registrationScheme";
 import { getDays, MONTHS, userDateFields, userFields, YEARS } from "../config";
+import { IRegistrationFormData } from "../interfaces";
+import { RegistrationScheme } from "../model/registrationScheme";
 
 import { IOption } from "./interfaces";
 
 export const RegistrationForm = () => {
-  const { handleSubmit, control, getValues } = useForm<IRegistrationFormData>({
+  const { handleSubmit, control, watch } = useForm<IRegistrationFormData>({
     resolver: zodResolver(RegistrationScheme),
     defaultValues: {
       name: "",
@@ -30,13 +30,12 @@ export const RegistrationForm = () => {
   });
 
   const dispatch = useAppDispatch();
-  const { isLoading } = useAppSelector((state) => state.session);
 
   const onSubmit = (data: IRegistrationFormData) => {
     dispatch(REGISTRATION(data));
   };
 
-  const { year, month } = getValues();
+  const [year, month] = watch(["year", "month"]);
 
   const DAYS = useMemo(() => getDays(month, year), [month, year]);
 

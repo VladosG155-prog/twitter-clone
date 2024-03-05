@@ -25,19 +25,21 @@ export const RightSection = () => {
       <h2 className="text-3xl font-roboto font-black mb-5">
         Join Twitter today
       </h2>
-      <Button
-        icon={<GoogleIcon />}
-        text="Sign up with Google"
-        variant="outlined"
-        onClick={handleClickSignInGoogle}
-        className="w-[400px]"
-      />
-      <Button
-        text="Sign up with email"
-        variant="outlined"
-        className="w-[400px]"
-        onClick={handleSignUpEmailClick}
-      />
+      <div className="max-w-[400px]">
+        <Button
+          icon={<GoogleIcon />}
+          text="Sign up with Google"
+          variant="outlined"
+          onClick={handleClickSignInGoogle}
+          className="w-[400px]"
+        />
+        <Button
+          text="Sign up with email"
+          variant="outlined"
+          className="w-[400px]"
+          onClick={handleSignUpEmailClick}
+        />
+      </div>
       <p>
         By singing up you agree to the{" "}
         <Link className="text-primary hover:opacity-65" to={ROUTES.BASE}>
