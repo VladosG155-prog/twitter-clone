@@ -11,7 +11,13 @@ export const checkUserSession = (): Promise<IUser | unknown> => {
           .where("uid", "==", user.uid)
           .get();
 
-        resolve(dbUser.docs[0].data());
+        const userInfo = dbUser.docs[0]?.data();
+
+        const res = {
+          ...userInfo,
+          id: dbUser.docs[0]?.id,
+        };
+        resolve(res);
       } else {
         reject(new Error("Whoops. Your session has been expired"));
       }

@@ -1,14 +1,14 @@
 import { FC } from "react";
 
-import Like from "@/shared/assets/icons/like.svg?react";
 import { Avatar } from "@/shared/ui/Avatar/Avatar";
 
 import { ITweetCardProps } from "./interfaces";
 
 export const TweetCard: FC<ITweetCardProps> = (props) => {
-  const { user, createdAt, text, likesCount, image } = props;
+  const { user, createdAt, text, image, slotLike } = props;
 
   const dateCreatedAt = createdAt?.toLocaleDateString();
+  console.log(props);
 
   return (
     <div className="flex p-5">
@@ -21,10 +21,7 @@ export const TweetCard: FC<ITweetCardProps> = (props) => {
         </div>
         <p>{text}</p>
         <img src={image ?? ""} alt="" />
-        <button className="flex items-center gap-3 mt-6">
-          <Like />
-          {likesCount}
-        </button>
+        {slotLike}
       </div>
     </div>
   );

@@ -5,6 +5,7 @@ import { ITweet } from "@/entities/tweet/interfaces";
 import { GET_TWEETS } from "@/entities/tweet/model/actions";
 import { TweetCard } from "@/entities/tweet/ui/TweetCard";
 import { TweetInput } from "@/features/tweet/addTweet/ui/TweetInput";
+import { LikeTweetButton } from "@/features/tweet/likeTweet/ui/LikeTweetButton";
 import profileBg from "@/shared/assets/profile-bg.png";
 import { useAppDispatch, useAppSelector } from "@/shared/model/hooks";
 
@@ -20,6 +21,7 @@ export const ProfilePage = () => {
   }, []);
 
   const { name, avatar } = user!;
+  console.log(tweets);
 
   return (
     <div>
@@ -35,13 +37,13 @@ export const ProfilePage = () => {
       </div>
 
       {tweets.length > 0 &&
-        tweets.map(({ user, createdAt, likesCount, text, image }: ITweet) => (
+        tweets.map(({ user, createdAt, text, image }: ITweet) => (
           <TweetCard
             user={user}
             image={image}
             createdAt={createdAt}
-            likesCount={likesCount}
             text={text}
+            slotLike={<LikeTweetButton />}
           />
         ))}
     </div>

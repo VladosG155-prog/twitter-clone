@@ -12,7 +12,7 @@ export const postTweet = async (data: ICreateTweetRequest) => {
 
     const resp = await addDoc(collection(db, "tweets"), {
       ...data,
-      user: db.doc("user/" + data.user.uid),
+      user: db.doc("users/" + data.user.id),
       image: imageUrl ?? "",
       createdAt: new Date(Date.now()),
     });
