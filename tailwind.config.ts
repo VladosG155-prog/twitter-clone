@@ -3,8 +3,8 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     fontFamily: {
-      roboto: ["Roboto"],
-      robotoSerif: ["Roboto-serif"],
+      roboto: ["Roboto", "sans-serif"],
+      robotoSerif: ["Roboto-serif", "sans-serif"],
     },
     fontSize: {
       sm: "0.8125rem",

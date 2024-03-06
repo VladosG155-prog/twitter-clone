@@ -6,18 +6,19 @@ import { auth, db } from "@/shared/api/firebase/instance";
 import { IRegistrationFormData } from "../registration/interfaces";
 
 export const createUser = async (userInfo: IRegistrationFormData) => {
-  const { email, password, name } = userInfo;
+  const { email, password, name, tel, year, month, day } = userInfo;
   const user = await createUserWithEmailAndPassword(auth, email, password);
 
   await updateProfile(user.user, {
     displayName: name,
   });
-  await addDoc(collection(db, "users"), {
+  const responseUser = await addDoc(collection(db, "users"), {
     uid: user.user.uid,
     name: user.user.displayName,
     email: user.user.email,
-    phone: user.user.phoneNumber,
+    phone: tel,
     avatar: user.user.photoURL,
+    dateOfBirthday: new Date(+year, +month, +day),
   });
-  return user;
+  return responseUser;
 };

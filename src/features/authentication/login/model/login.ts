@@ -1,9 +1,9 @@
 import { PayloadAction } from "@reduxjs/toolkit";
-import { User } from "firebase/auth";
 import { call, put, takeEvery } from "redux-saga/effects";
 
 import { sessionSlice } from "@/entities/session";
-import { LOGIN } from "@/entities/session/model/actions";
+import { IUser } from "@/entities/session/interfaces";
+import { ISLOGGEDIN, LOGIN } from "@/entities/session/model/actions";
 
 import { loginUser } from "../../api/loginUser";
 
@@ -13,8 +13,8 @@ export function* login(
   try {
     const { email, password } = data.payload;
     yield put(sessionSlice.actions.userLoading(true));
-    const user: User = yield call(loginUser, email, password);
-    yield put(sessionSlice.actions.setUser(user));
+    const user: IUser = yield call(loginUser, email, password);
+    yield put(ISLOGGEDIN());
     yield put(sessionSlice.actions.userLoading(false));
     console.log("f", user);
   } catch (error) {

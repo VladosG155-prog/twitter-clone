@@ -11,7 +11,7 @@ export const ProfileInfo: FC<IProfileInfoProps> = ({
 }) => {
   return (
     <div className="flex flex-col justify-center border-gray-400 border-b  pl-5 pb-14">
-      <Avatar size="lg" url={avatarUrl ?? ""} />
+      <Avatar size="lg" url={avatarUrl} />
       <div className="ml-3">
         <h5 className="font-robotoSerif text-1.75xl font-bold">{name}</h5>
         <p className=" text-base text-gray-500">@bobur_mavlonov</p>

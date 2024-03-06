@@ -1,4 +1,4 @@
 export interface IAvatarProps {
-  url?: string;
+  url?: string | null;
   size?: "lg" | "md" | "xs";
 }

@@ -1,9 +1,18 @@
 import { signInWithPopup } from "firebase/auth";
+import { addDoc, collection } from "firebase/firestore";
 
-import { auth, provider } from "@/shared/api/firebase/instance";
+import { auth, db, provider } from "@/shared/api/firebase/instance";
 
 export const googleAuth = async () => {
   const user = await signInWithPopup(auth, provider);
+  const responseUser = await addDoc(collection(db, "users"), {
+    uid: user.user.uid,
+    name: user.user.displayName,
+    email: user.user.email,
+    phone: user.user.phoneNumber,
+    avatar: user.user.photoURL,
+    dateOfBirthday: null,
+  });
 
-  return user.user;
+  return responseUser;
 };
