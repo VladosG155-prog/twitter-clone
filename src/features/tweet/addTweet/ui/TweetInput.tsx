@@ -39,7 +39,7 @@ export const TweetInput = () => {
             onClick={handleClickTweet}
             variant="primary"
             disabled={!text.length}
-            className="mb-0 w-[116px]"
+            className="mb-0 max-w-[116px]"
           />
         </div>
       </div>

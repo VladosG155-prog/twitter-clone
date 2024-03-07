@@ -6,7 +6,6 @@ import { auth, db, provider } from "@/shared/api/firebase/instance";
 export const googleAuth = async () => {
   const user = await signInWithPopup(auth, provider);
   console.log(user.user.uid);
-
   const responseUser = await addDoc(collection(db, "users"), {
     uid: user.user.uid,
     name: user.user.displayName,

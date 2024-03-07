@@ -1,23 +1,24 @@
-import { addDoc, collection } from "firebase/firestore";
+import { v4 } from "uuid";
 
-import { ICreateTweetRequest } from "@/entities/tweet/interfaces";
+import { ICreateTweetRequest } from "@/entities/tweet/types";
 import { db } from "@/shared/api/firebase/instance";
 import { uploadFile } from "@/shared/api/storage/uploadFile";
 
 export const postTweet = async (data: ICreateTweetRequest) => {
   try {
     const imageUrl = await uploadFile(data.image);
-    console.log(imageUrl);
-    console.log(data.user);
-
-    const resp = await addDoc(collection(db, "tweets"), {
-      ...data,
-      user: db.doc("users/" + data.user.id),
-      image: imageUrl ?? "",
-      createdAt: new Date(Date.now()),
-    });
-    console.log(resp);
+    const id = v4();
+    await db
+      .collection("tweets")
+      .doc(id)
+      .set({
+        ...data,
+        id,
+        user: db.doc("users/" + data.user.id),
+        image: imageUrl ?? "",
+        createdAt: new Date(Date.now()),
+      });
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };

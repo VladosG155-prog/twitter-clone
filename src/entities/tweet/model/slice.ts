@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { ITweet } from "../interfaces";
+import { ITweet } from "../types";
 
 interface IState {
   tweets: ITweet[];
@@ -21,6 +21,22 @@ export const tweetSlice = createSlice({
     },
     setLoading: (state, action) => {
       state.isLoading = action.payload;
+    },
+    updateTweetLike: (state, action) => {
+      const { postId, userId } = action.payload;
+      const copyState = [...state.tweets];
+      const tweetIdx = state.tweets.findIndex((tweet) => tweet.id === postId);
+      console.log(tweetIdx);
+
+      console.log(action.payload);
+      if (copyState[tweetIdx].userLikesIds) {
+        copyState[tweetIdx].userLikesIds.push(userId);
+      } else {
+        copyState[tweetIdx].userLikesIds = [userId];
+      }
+
+      console.log("copy", copyState);
+      state.tweets = copyState;
     },
   },
   /*   selectors: {

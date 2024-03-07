@@ -1,8 +1,8 @@
 import { FC } from "react";
 
-import { Avatar } from "@/shared/ui/Avatar/Avatar";
+import { Avatar } from "@/shared/ui/";
 
-import { IProfileInfoProps } from "./interfaces";
+import { IProfileInfoProps } from "./types";
 
 export const ProfileInfo: FC<IProfileInfoProps> = ({
   avatarUrl,

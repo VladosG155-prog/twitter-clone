@@ -2,16 +2,19 @@ import { Timestamp } from "firebase/firestore";
 
 import { db } from "@/shared/api/firebase/instance";
 
-import { ITweet } from "../interfaces";
+import { ITweet } from "../types";
 
-export const fetchTweets = async () => {
+export const fetchTweets = async (userId?: string) => {
+  const userDocRef = db.collection("users").doc(userId);
+
   const { docs } = await db
     .collection("tweets")
     .orderBy("createdAt", "desc")
+    .where("user", "==", userDocRef)
     .get();
 
   const promiseArr = docs.map(async (doc): Promise<ITweet> => {
-    const { text, user, createdAt, likesCount, image } = doc.data();
+    const { text, user, createdAt, userLikesIds, image, id } = doc.data();
 
     const userData = (await user.get()).data();
 
@@ -22,10 +25,11 @@ export const fetchTweets = async () => {
 
     return {
       text,
+      id,
       image,
       user: userData,
       createdAt: createdDate,
-      likesCount,
+      userLikesIds: userLikesIds ?? [],
     };
   });
 

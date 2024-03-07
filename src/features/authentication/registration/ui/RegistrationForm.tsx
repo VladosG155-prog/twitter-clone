@@ -10,7 +10,7 @@ import { Button, Input } from "@/shared/ui";
 import { Select } from "@/shared/ui/Select/Select";
 
 import { getDays, MONTHS, userDateFields, userFields, YEARS } from "../config";
-import { IRegistrationFormData } from "../interfaces";
+import { IRegistrationFormData } from "../types";
 import { RegistrationScheme } from "../model/registrationScheme";
 
 import { IOption } from "./interfaces";

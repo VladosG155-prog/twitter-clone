@@ -8,7 +8,7 @@ import { logoutUser } from "../../api/logoutUser";
 export function* logout() {
   try {
     yield call(logoutUser);
-    yield put(sessionSlice.actions.setUser(null));
+    yield put(sessionSlice.actions.setUser(undefined));
   } catch (error) {
     console.error("error", error);
   }

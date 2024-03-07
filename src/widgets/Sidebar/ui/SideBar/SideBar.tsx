@@ -5,7 +5,7 @@ import { Logout } from "@/features/authentication/logout/ui/Logout";
 import TwitterIcon from "@/shared/assets/icons/twitter.svg?react";
 import { Button } from "@/shared/ui";
 
-import { links } from "../config";
+import { links } from "../../config";
 
 export const SideBar = () => {
   return (

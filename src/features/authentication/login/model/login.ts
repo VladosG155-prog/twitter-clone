@@ -2,7 +2,7 @@ import { PayloadAction } from "@reduxjs/toolkit";
 import { call, put, takeEvery } from "redux-saga/effects";
 
 import { sessionSlice } from "@/entities/session";
-import { IUser } from "@/entities/session/interfaces";
+import { IUser } from "@/entities/session/types";
 import { ISLOGGEDIN, LOGIN } from "@/entities/session/model/actions";
 
 import { loginUser } from "../../api/loginUser";

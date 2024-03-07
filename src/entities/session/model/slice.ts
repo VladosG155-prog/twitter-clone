@@ -1,14 +1,15 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { IUser } from "../interfaces";
+import { IUser } from "../types";
 
 interface IState {
-  user?: IUser | null;
+  user?: IUser;
   isLoading: boolean;
 }
 
 const initialState: IState = {
   isLoading: false,
+  user: undefined,
 };
 
 export const sessionSlice = createSlice({
@@ -18,7 +19,7 @@ export const sessionSlice = createSlice({
     userLoading: (state, action) => {
       state.isLoading = action.payload;
     },
-    setUser: (state, action: PayloadAction<IUser | null>) => {
+    setUser: (state, action: PayloadAction<IUser | undefined>) => {
       state.user = action.payload;
     },
   },

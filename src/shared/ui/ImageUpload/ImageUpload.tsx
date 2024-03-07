@@ -2,7 +2,7 @@ import { FC } from "react";
 
 import ImageIcon from "@/shared/assets/icons/image.svg?react";
 
-import { IImageUploadProps } from "./interfaces";
+import { IImageUploadProps } from "./types";
 
 export const ImageUpload: FC<IImageUploadProps> = ({ value, onChange }) => {
   return (

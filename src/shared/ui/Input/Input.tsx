@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 import cn from "classnames";
 
-import { IInputProps } from "./interfaces";
+import { IInputProps } from "./types";
 
 export const Input = forwardRef<HTMLInputElement, IInputProps>((props) => {
   const { placeholder, error } = props;

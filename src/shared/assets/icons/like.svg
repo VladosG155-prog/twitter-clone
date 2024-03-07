@@ -1,3 +1,41 @@
-<svg width="21" height="19" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M10.8 18.914H10.786C8.203 18.866 0.75 12.132 0.75 5.754C0.75 2.69 3.275 0 6.153 0C8.443 0 9.983 1.58 10.799 2.73C11.613 1.582 13.153 0 15.444 0C18.324 0 20.848 2.69 20.848 5.755C20.848 12.131 13.394 18.865 10.811 18.912H10.8V18.914ZM6.154 1.501C4.074 1.501 2.251 3.489 2.251 5.756C2.251 11.496 9.285 17.352 10.801 17.414C12.319 17.352 19.351 11.497 19.351 5.756C19.351 3.489 17.528 1.501 15.448 1.501C12.92 1.501 11.508 4.437 11.496 4.466C11.266 5.028 10.34 5.028 10.109 4.466C10.095 4.436 8.68401 1.501 6.15501 1.501H6.154Z" fill="#536471"/>
-</svg>
+  <svg id="heart-svg" viewBox="467 392 58 57" xmlns="http://www.w3.org/2000/svg">
+        <g id="Group" fill="none" fill-rule="evenodd" transform="translate(467 392)">
+          <path d="M29.144 20.773c-.063-.13-4.227-8.67-11.44-2.59C7.63 28.795 28.94 43.256 29.143 43.394c.204-.138 21.513-14.6 11.44-25.213-7.214-6.08-11.377 2.46-11.44 2.59z" id="heart" fill="#AAB8C2"/>
+          <circle id="main-circ" fill="#E2264D" opacity="0" cx="29.5" cy="29.5" r="1.5"/>
+
+          <g id="grp7" opacity="0" transform="translate(7 6)">
+            <circle id="oval1" fill="#9CD8C3" cx="2" cy="6" r="2"/>
+            <circle id="oval2" fill="#8CE8C3" cx="5" cy="2" r="2"/>
+          </g>
+
+          <g id="grp6" opacity="0" transform="translate(0 28)">
+            <circle id="oval1" fill="#CC8EF5" cx="2" cy="7" r="2"/>
+            <circle id="oval2" fill="#91D2FA" cx="3" cy="2" r="2"/>
+          </g>
+
+          <g id="grp3" opacity="0" transform="translate(52 28)">
+            <circle id="oval2" fill="#9CD8C3" cx="2" cy="7" r="2"/>
+            <circle id="oval1" fill="#8CE8C3" cx="4" cy="2" r="2"/>
+          </g>
+
+          <g id="grp2" opacity="0" transform="translate(44 6)">
+            <circle id="oval2" fill="#CC8EF5" cx="5" cy="6" r="2"/>
+            <circle id="oval1" fill="#CC8EF5" cx="2" cy="2" r="2"/>
+          </g>
+
+          <g id="grp5" opacity="0" transform="translate(14 50)">
+            <circle id="oval1" fill="#91D2FA" cx="6" cy="5" r="2"/>
+            <circle id="oval2" fill="#91D2FA" cx="2" cy="2" r="2"/>
+          </g>
+
+          <g id="grp4" opacity="0" transform="translate(35 50)">
+            <circle id="oval1" fill="#F48EA7" cx="6" cy="5" r="2"/>
+            <circle id="oval2" fill="#F48EA7" cx="2" cy="2" r="2"/>
+          </g>
+
+          <g id="grp1" opacity="0" transform="translate(24)">
+            <circle id="oval1" fill="#9FC7FA" cx="2.5" cy="3" r="2"/>
+            <circle id="oval2" fill="#9FC7FA" cx="7.5" cy="2" r="2"/>
+          </g>
+        </g>
+      </svg>

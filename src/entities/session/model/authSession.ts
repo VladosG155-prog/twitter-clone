@@ -4,7 +4,7 @@ import { sessionSlice } from "@/entities/session";
 import { ISLOGGEDIN } from "@/entities/session/model/actions";
 
 import { checkUserSession } from "../api/checkUserSession";
-import { IUser } from "../interfaces";
+import { IUser } from "../types";
 
 export function* isLoggedIn() {
   try {

@@ -3,7 +3,7 @@ import cn from "classnames";
 
 import AngleDown from "../../assets/icons/angle-down.svg?react";
 
-import { ISelectProps } from "./interfaces";
+import { ISelectProps } from "./types";
 
 export const Select: FC<ISelectProps> = (props) => {
   const { placeholder, options, value, onChange, className } = props;

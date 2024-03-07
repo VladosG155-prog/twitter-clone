@@ -3,7 +3,7 @@ import cn from "classnames";
 
 import defaultAvatar from "@/shared/assets/defaultAvatar.png";
 
-import { IAvatarProps } from "./interfaces";
+import { IAvatarProps } from "./types";
 
 export const Avatar: FC<IAvatarProps> = ({ url, size = "xs" }) => {
   return (

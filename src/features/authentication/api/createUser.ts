@@ -3,7 +3,7 @@ import { addDoc, collection } from "firebase/firestore";
 
 import { auth, db } from "@/shared/api/firebase/instance";
 
-import { IRegistrationFormData } from "../registration/interfaces";
+import { IRegistrationFormData } from "../registration/types";
 
 export const createUser = async (userInfo: IRegistrationFormData) => {
   const { email, password, name, tel, year, month, day } = userInfo;

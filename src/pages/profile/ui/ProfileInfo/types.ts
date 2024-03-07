@@ -1,5 +1,5 @@
 export interface IProfileInfoProps {
   avatarUrl?: string;
-  name: string | null;
+  name?: string;
   description?: string;
 }

@@ -5,7 +5,7 @@ import { LOGIN } from "@/entities/session/model/actions";
 import { useAppDispatch, useAppSelector } from "@/shared/model/hooks";
 import { Button, Input } from "@/shared/ui";
 
-import { IAuthFormData } from "../../registration/interfaces";
+import { IAuthFormData } from "../../registration/types";
 import { LoginScheme } from "../model/loginScheme";
 
 export const LoginForm = () => {

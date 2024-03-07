@@ -1,6 +1,4 @@
-import { ReactNode } from "react";
-
-import { IUser } from "@/entities/session/interfaces";
+import { IUser } from "@/entities/session/types";
 
 export interface ITweetCardProps {
   user: IUser;
@@ -8,5 +6,4 @@ export interface ITweetCardProps {
   userLikesIds: string[];
   createdAt: Date;
   image: string;
-  slotLike: ReactNode;
 }

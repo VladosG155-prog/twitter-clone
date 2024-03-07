@@ -1,6 +1,6 @@
 import { auth, db } from "@/shared/api/firebase/instance";
 
-import { IUser } from "../interfaces";
+import { IUser } from "../types";
 
 export const checkUserSession = (): Promise<IUser | unknown> => {
   return new Promise((resolve, reject) => {

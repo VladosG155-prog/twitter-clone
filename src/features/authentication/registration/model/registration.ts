@@ -10,7 +10,7 @@ import {
 
 import { createUser } from "../../api/createUser";
 import { googleAuth } from "../../api/googleAuth";
-import { IRegistrationFormData } from "../interfaces";
+import { IRegistrationFormData } from "../types";
 
 export function* registration(
   data: PayloadAction<IRegistrationFormData>

@@ -1,10 +1,11 @@
-import { IUser } from "../session/interfaces";
+import { IUser } from "../session/types";
 
 export interface ITweet {
   text: string;
   createdAt: Date;
+  id: string;
   user: IUser;
-  likesCount: number;
+  userLikesIds: string[];
   image: string;
 }
 
