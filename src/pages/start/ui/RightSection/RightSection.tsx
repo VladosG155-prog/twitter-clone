@@ -25,7 +25,7 @@ export const RightSection = () => {
       <h2 className="text-3xl font-roboto font-black mb-5">
         Join Twitter today
       </h2>
-      <div className="max-w-[400px]">
+      <div className="max-w-[400px] gap-3 flex flex-col">
         <Button
           icon={<GoogleIcon />}
           text="Sign up with Google"
@@ -40,7 +40,7 @@ export const RightSection = () => {
           onClick={handleSignUpEmailClick}
         />
       </div>
-      <p>
+      <p className="mt-4">
         By singing up you agree to the{" "}
         <Link className="text-primary hover:opacity-65" to={ROUTES.BASE}>
           Terms of Service

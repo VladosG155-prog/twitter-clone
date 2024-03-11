@@ -19,10 +19,12 @@ export const ProfileInfo: FC<IProfileInfoProps> = ({
         <p className=" mb-14">{description}</p>
         <div className="flex">
           <p className="text-gray-500 mr-5">
-            <span className="font-bold text-black">67</span> Following
+            <span className="font-bold text-black dark:text-white">67</span>{" "}
+            Following
           </p>
           <p className="text-gray-500">
-            <span className="font-bold text-black">47</span> Followers
+            <span className="font-bold text-black dark:text-white">47</span>{" "}
+            Followers
           </p>
         </div>
       </div>

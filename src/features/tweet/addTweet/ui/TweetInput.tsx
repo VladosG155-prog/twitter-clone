@@ -29,7 +29,7 @@ export const TweetInput = () => {
           value={text}
           onChange={(e) => setText(e.target.value)}
           placeholder="What’s happening"
-          className="resize-none w-full h-28 text-1.5xl p-5 font-semibold text-gray-300 font-roboto"
+          className="resize-none w-full border-b border-gray-300 mb-5 h-28 text-1.5xl p-5 font-semibold text-gray-300 dark:bg-black font-roboto"
         />
         <div className="w-full flex justify-between items-center">
           <AddPicture value={file} onChange={setFile} />

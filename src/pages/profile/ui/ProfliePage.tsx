@@ -49,7 +49,6 @@ export const ProfilePage = () => {
   };
 
   useEffect(() => {
-    console.log("@useeffect user", 121212);
     dispatch(GET_TWEETS({ userId: activeUser.id }));
   }, [activeUser.id]);
 

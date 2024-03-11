@@ -2,6 +2,7 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { addDoc, collection, updateDoc } from "firebase/firestore";
 
 import { auth, db } from "@/shared/api/firebase/instance";
+import { generateSlug } from "@/shared/lib/generateRandomProfileId/randomProfileId";
 
 import { IRegistrationFormData } from "../registration/types";
 
@@ -17,7 +18,7 @@ export const createUser = async (userInfo: IRegistrationFormData) => {
     email: user.user.email,
     phone: tel,
     avatar: user.user.photoURL,
-    profileId: "@" + user.user.email?.split("@")[0],
+    profileId: "@" + generateSlug(),
     dateOfBirthday: new Date(+year, +month, +day),
   });
 

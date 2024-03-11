@@ -9,13 +9,17 @@ export const fetchTweets = async (userId?: string) => {
     const findedUser = db.collection("users").doc(userId);
     console.log("@finded", findedUser);
 
-    const { docs } = await db
-      .collection("tweets")
-      .orderBy("createdAt", "desc")
+    const currentTweets = db.collection("tweets").orderBy("createdAt", "desc");
+
+    const userTweets = await currentTweets
       .where("user", "==", findedUser)
       .get();
 
-    const promiseArr = docs.map(async (doc): Promise<ITweet> => {
+    const allTweets = await currentTweets.get();
+
+    const docs = userId ? userTweets : allTweets;
+
+    const promiseArr = docs.docs.map(async (doc): Promise<ITweet> => {
       const { text, user, createdAt, userLikesIds, image, id } = doc.data();
 
       const userData = (await user.get()).data();

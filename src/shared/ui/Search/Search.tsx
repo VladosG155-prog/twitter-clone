@@ -1,5 +1,4 @@
 import { ChangeEvent, useEffect, useState } from "react";
-import classNames from "classnames";
 
 import { ITweet } from "@/entities/tweet/types";
 import { client } from "@/shared/api/firebase/instance";
@@ -15,7 +14,7 @@ export const Search = () => {
   };
 
   useEffect(() => {
-    setIsShowSearchHints(val.length >= 1);
+    setIsShowSearchHints(!!val.length && !!posts.length);
   }, [val]);
 
   useEffect(() => {
@@ -45,7 +44,7 @@ export const Search = () => {
           value={val}
           onChange={handleChangeInput}
           type="text"
-          className="w-full h-[55px] bg-gray-100 rounded-full pl-16 text-xl"
+          className="w-full h-[55px] bg-gray-100 rounded-full pl-16 text-xl dark:text-black"
           placeholder="Search Twitter"
         />
       </div>
