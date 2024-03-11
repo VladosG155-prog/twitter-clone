@@ -1,14 +1,14 @@
-import { arrayUnion } from "firebase/firestore";
+import { arrayRemove, arrayUnion } from "firebase/firestore";
 
 import { db } from "@/shared/api/firebase/instance";
 
 export const postLikeTweet = async (userId: string, postId: string) => {
-  console.log(postId);
+  const tweetItem = db.collection("tweets").doc(postId);
+  const tweet = await tweetItem.get();
 
-  const doc2 = await db
-    .collection("tweets")
-    .doc(postId)
-    .update({
-      userLikesIds: arrayUnion(userId),
-    });
+  const isUserLikeExist = tweet.data()!.userLikesIds?.includes(userId);
+
+  await tweetItem.update({
+    userLikesIds: isUserLikeExist ? arrayRemove(userId) : arrayUnion(userId),
+  });
 };

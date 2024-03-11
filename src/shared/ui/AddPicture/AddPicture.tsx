@@ -2,9 +2,9 @@ import { FC } from "react";
 
 import ImageIcon from "@/shared/assets/icons/image.svg?react";
 
-import { IImageUploadProps } from "./types";
+import { IAddPictureProps } from "./types";
 
-export const ImageUpload: FC<IImageUploadProps> = ({ value, onChange }) => {
+export const AddPicture: FC<IAddPictureProps> = ({ value, onChange }) => {
   return (
     <label htmlFor="img" className="cursor-pointer">
       <ImageIcon />

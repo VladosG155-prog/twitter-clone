@@ -1,28 +1,32 @@
+import { Link } from "react-router-dom";
+
 import { selectUser } from "@/entities/session";
 import { LOGOUT } from "@/entities/session/model/actions";
+import { UserCard } from "@/entities/user/ui/UserCard/UserCard";
+import { ROUTES } from "@/shared/const/routes";
 import { useAppDispatch, useAppSelector } from "@/shared/model/hooks";
 import { Button } from "@/shared/ui";
-import { Avatar } from "@/shared/ui/Avatar/Avatar";
 
 export const Logout = () => {
   const dispatch = useAppDispatch();
 
-  const user = useAppSelector(selectUser);
+  const profile = useAppSelector(selectUser);
 
   const handleClick = () => {
     dispatch(LOGOUT());
   };
 
   return (
-    <div>
-      <div className="flex mb-5">
-        <Avatar size="xs" url={user?.avatar} />
-        <div className="ml-7">
-          {user?.name}
-          <p> @bobur_mavlonov</p>
-        </div>
-      </div>
-      <Button text="Log out" className="bg-gray-400" onClick={handleClick} />
+    <div className="mt-16">
+      <Link to={ROUTES.PROFILE}>
+        <UserCard
+          avatar={profile?.avatar}
+          name={profile?.name}
+          userId={profile?.profileId}
+          isCurrentUser
+        />
+      </Link>
+      <Button text="Log out" variant="secondary" onClick={handleClick} />
     </div>
   );
 };

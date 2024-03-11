@@ -1,5 +1,7 @@
 import { PayloadAction } from "@reduxjs/toolkit";
-import { call, put, takeEvery } from "redux-saga/effects";
+import { call, put, takeLeading } from "redux-saga/effects";
+
+import { appSlice } from "@/entities/app/model/slice";
 
 import { fetchTweets } from "../api/fetchTweets";
 
@@ -10,14 +12,17 @@ export function* getTweets(
   action: PayloadAction<{ userId?: string }>
 ): Generator {
   try {
-    const tweets = yield call(fetchTweets, action.payload.userId);
-
+    const { userId } = action.payload;
+    const tweets = yield call(fetchTweets, userId);
     yield put(tweetSlice.actions.saveTweets(tweets));
+    yield put(appSlice.actions.setLoader(false));
   } catch (error) {
+    yield put(appSlice.actions.setLoader(false));
     console.error("error", error);
   }
 }
 
 export function* watchGetTweets() {
-  yield takeEvery(GET_TWEETS, getTweets);
+  yield put(appSlice.actions.setLoader(true));
+  yield takeLeading(GET_TWEETS, getTweets);
 }

@@ -11,6 +11,7 @@ export const googleAuth = async () => {
     name: user.user.displayName,
     email: user.user.email,
     phone: user.user.phoneNumber,
+    profileId: "@" + user.user.email?.split("@")[0],
     avatar: user.user.photoURL,
     dateOfBirthday: null,
   });

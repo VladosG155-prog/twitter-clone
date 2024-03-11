@@ -7,6 +7,6 @@ declare module "*.svg" {
   export default ReactComponent;
 }
 
-declare type RootState = import("/app/store").RootState;
+declare type RootState = import("app/store").RootState;
 
-declare type AppDispatch = import("/app/store").AppDispatch;
+declare type AppDispatch = import("app/store").AppDispatch;

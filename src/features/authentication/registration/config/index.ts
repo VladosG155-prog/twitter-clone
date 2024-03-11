@@ -32,9 +32,9 @@ export const getDays = (month: string, year: string) => {
 
 export const userFields = [
   { fieldName: "name", placeholder: "Name" },
-  { fieldName: "tel", placeholder: "Phone number" },
+  { fieldName: "tel", placeholder: "Phone number", type: "tel" },
   { fieldName: "email", placeholder: "Email" },
-  { fieldName: "password", placeholder: "Password" },
+  { fieldName: "password", placeholder: "Password", type: "password" },
 ];
 
 export const userDateFields: {

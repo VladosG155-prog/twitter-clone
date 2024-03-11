@@ -3,13 +3,13 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IUser } from "../types";
 
 interface IState {
-  user?: IUser;
+  profile?: IUser;
   isLoading: boolean;
 }
 
 const initialState: IState = {
   isLoading: false,
-  user: undefined,
+  profile: undefined,
 };
 
 export const sessionSlice = createSlice({
@@ -20,11 +20,11 @@ export const sessionSlice = createSlice({
       state.isLoading = action.payload;
     },
     setUser: (state, action: PayloadAction<IUser | undefined>) => {
-      state.user = action.payload;
+      state.profile = action.payload;
     },
   },
   selectors: {
-    selectUser: (state) => state.user,
+    selectUser: (state) => state.profile!,
     selectSession: (state) => state,
   },
 });

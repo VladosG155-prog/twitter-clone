@@ -10,8 +10,8 @@ import { Button, Input } from "@/shared/ui";
 import { Select } from "@/shared/ui/Select/Select";
 
 import { getDays, MONTHS, userDateFields, userFields, YEARS } from "../config";
-import { IRegistrationFormData } from "../types";
 import { RegistrationScheme } from "../model/registrationScheme";
+import { IRegistrationFormData } from "../types";
 
 import { IOption } from "./interfaces";
 
@@ -47,7 +47,7 @@ export const RegistrationForm = () => {
 
   return (
     <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
-      {userFields.map(({ fieldName, placeholder }) => (
+      {userFields.map(({ fieldName, placeholder, type }) => (
         <Controller
           name={fieldName}
           key={fieldName}
@@ -57,6 +57,7 @@ export const RegistrationForm = () => {
               {...field}
               error={fieldState.error}
               placeholder={placeholder}
+              type={type}
             />
           )}
         />

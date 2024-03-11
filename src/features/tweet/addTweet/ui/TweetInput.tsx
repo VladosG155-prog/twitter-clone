@@ -4,8 +4,8 @@ import { selectUser } from "@/entities/session";
 import { CREATE_TWEET } from "@/entities/tweet/model/actions";
 import { useAppDispatch, useAppSelector } from "@/shared/model/hooks";
 import { Button } from "@/shared/ui";
+import { AddPicture } from "@/shared/ui/";
 import { Avatar } from "@/shared/ui/Avatar/Avatar";
-import { ImageUpload } from "@/shared/ui/ImageUpload/ImageUpload";
 
 export const TweetInput = () => {
   const user = useAppSelector(selectUser);
@@ -29,10 +29,10 @@ export const TweetInput = () => {
           value={text}
           onChange={(e) => setText(e.target.value)}
           placeholder="What’s happening"
-          className="resize-none w-full h-28 text-1.5xl font-semibold font-roboto"
+          className="resize-none w-full h-28 text-1.5xl p-5 font-semibold text-gray-300 font-roboto"
         />
         <div className="w-full flex justify-between items-center">
-          <ImageUpload value={file} onChange={setFile} />
+          <AddPicture value={file} onChange={setFile} />
 
           <Button
             text="Tweet"

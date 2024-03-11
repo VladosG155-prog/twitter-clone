@@ -8,14 +8,13 @@ export const checkUserSession = (): Promise<IUser | unknown> => {
       if (user) {
         const dbUser = await db
           .collection("users")
-          .where("uid", "==", user.uid)
+          .where("email", "==", user.email)
           .get();
 
         const userInfo = dbUser.docs[0]?.data();
 
         const res = {
           ...userInfo,
-          id: dbUser.docs[0]?.id,
         };
         resolve(res);
       } else {

@@ -1,5 +1,6 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 
+import { appSlice } from "@/entities/app/model/slice";
 import { sessionSlice } from "@/entities/session";
 import { ISLOGGEDIN } from "@/entities/session/model/actions";
 
@@ -8,14 +9,14 @@ import { IUser } from "../types";
 
 export function* isLoggedIn() {
   try {
-    yield put(sessionSlice.actions.userLoading(true));
+    yield put(appSlice.actions.setLoader(true));
     const user: IUser = yield call(checkUserSession);
 
     yield put(sessionSlice.actions.setUser(user));
 
-    yield put(sessionSlice.actions.userLoading(false));
+    yield put(appSlice.actions.setLoader(false));
   } catch (error) {
-    yield put(sessionSlice.actions.userLoading(false));
+    yield put(appSlice.actions.setLoader(false));
     console.error(error);
   }
 }

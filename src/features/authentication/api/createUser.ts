@@ -1,5 +1,5 @@
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, updateDoc } from "firebase/firestore";
 
 import { auth, db } from "@/shared/api/firebase/instance";
 
@@ -13,12 +13,17 @@ export const createUser = async (userInfo: IRegistrationFormData) => {
     displayName: name,
   });
   const responseUser = await addDoc(collection(db, "users"), {
-    uid: user.user.uid,
     name: user.user.displayName,
     email: user.user.email,
     phone: tel,
     avatar: user.user.photoURL,
+    profileId: "@" + user.user.email?.split("@")[0],
     dateOfBirthday: new Date(+year, +month, +day),
   });
-  return responseUser;
+
+  const responseUserWithId = await updateDoc(responseUser, {
+    id: responseUser.id,
+  });
+
+  return responseUserWithId;
 };

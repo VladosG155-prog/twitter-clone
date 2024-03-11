@@ -1,7 +1,7 @@
 import { FC } from "react";
 import cn from "classnames";
 
-import defaultAvatar from "@/shared/assets/defaultAvatar.png";
+import defaultAvatar from "@/shared/assets/default.jpeg";
 
 import { IAvatarProps } from "./types";
 

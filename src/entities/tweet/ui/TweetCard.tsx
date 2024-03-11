@@ -15,7 +15,7 @@ export const TweetCard: FC<ITweetCardProps> = (props) => {
       <div className="ml-2">
         <div className="gap-3 flex">
           <span>{user?.name}</span>
-          <span>@bobur_mavlonov</span>
+          <span>{user?.profileId}</span>
           <span> {dateCreatedAt}</span>
         </div>
         <p>{text}</p>

@@ -1,4 +1,5 @@
 import { FC, useId } from "react";
+import classNames from "classnames";
 
 import { LIKE_TWEET } from "@/entities/tweet/model/actions";
 import Like from "@/shared/assets/icons/like.svg?react";
@@ -10,6 +11,7 @@ export const LikeTweetButton: FC<ILikeTweetButtonProps> = ({
   userId,
   postId,
   likesCount,
+  isLikedByUser,
 }) => {
   const dispatch = useAppDispatch();
 
@@ -21,14 +23,31 @@ export const LikeTweetButton: FC<ILikeTweetButtonProps> = ({
 
   return (
     <button
-      onClick={handleClickButton}
-      className="flex items-center gap-2 mt-6 pl-12"
+      onClick={(e) => {
+        e.preventDefault();
+        handleClickButton();
+      }}
+      className="inline-flex group/item items-center gap-2 mt-6 pl-12 max-w-max"
     >
-      <input type="checkbox" id={id} />
-      <label htmlFor={id}>
-        <Like className="like-heart" />
+      <input
+        type="checkbox"
+        onChange={() => null}
+        checked={isLikedByUser}
+        id={id}
+      />
+      <label
+        htmlFor={id}
+        className="group-hover/item:bg-pink-500 rounded-full transition-all group-hover/item:bg-opacity-25"
+      >
+        <Like className="like-heart text-gray-400 group-hover/item:text-pink-500" />
       </label>
-      {likesCount}
+      <span
+        className={classNames("group-hover/item:text-pink-500", {
+          "text-[#e2264d]": isLikedByUser,
+        })}
+      >
+        {likesCount}
+      </span>
     </button>
   );
 };

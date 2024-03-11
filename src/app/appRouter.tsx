@@ -49,6 +49,14 @@ export const appRouter = createBrowserRouter([
         ),
       },
       {
+        path: ROUTES.PROFILE + "/:profileId",
+        element: (
+          <GuestGuard>
+            <ProfilePage />
+          </GuestGuard>
+        ),
+      },
+      {
         path: ROUTES.HOME,
         element: (
           <GuestGuard>
