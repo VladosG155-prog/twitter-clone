@@ -4,8 +4,8 @@ import classNames from "classnames";
 
 import { Logout } from "@/features/authentication/logout/ui/Logout";
 import { TweetInput } from "@/features/tweet/addTweet/ui/TweetInput";
-import TwitterIcon from "@/shared/assets/icons/twitter.svg?react";
 import { Button, Modal } from "@/shared/ui";
+import { Icon } from "@/shared/ui/Icon/Icon";
 
 import { links } from "../../config";
 
@@ -14,8 +14,13 @@ export const SideBar = () => {
 
   return (
     <div className="col-span-2 pt-8">
-      <TwitterIcon width={50} height={41} className="text-primary mb-10" />
-      {links.map(({ Icon, name }) => (
+      <Icon
+        name="twitter"
+        width={50}
+        height={41}
+        className="text-primary mb-10"
+      />
+      {links.map(({ iconName, name }) => (
         <NavLink
           key={name}
           to={"/" + name.toLowerCase()}
@@ -25,7 +30,7 @@ export const SideBar = () => {
             })
           }
         >
-          <Icon />
+          <Icon name={iconName} />
           <span className="ml-5">{name}</span>
         </NavLink>
       ))}

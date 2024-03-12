@@ -4,10 +4,12 @@ import { ITweet } from "../types";
 
 interface IState {
   tweets: ITweet[];
+  isLoading: boolean;
 }
 
 const initialState: IState = {
   tweets: [],
+  isLoading: false,
 };
 
 export const tweetSlice = createSlice({
@@ -16,6 +18,9 @@ export const tweetSlice = createSlice({
   reducers: {
     saveTweets: (state, action) => {
       state.tweets = action.payload;
+    },
+    setLoading: (state, action) => {
+      state.isLoading = action.payload;
     },
     updateTweetLike: (state, action) => {
       const { postId, userId } = action.payload;

@@ -19,9 +19,14 @@ export const postTweet = async (data: ICreateTweetRequest) => {
       });
 
     const doc = await db.collection("tweets").doc(id).get();
-    console.log("@", doc.data());
-
-    await client.collections("tweets").documents().create(doc.data());
+    const responsedData = doc.data()!;
+    await client
+      .collections("tweets")
+      .documents()
+      .create({
+        ...responsedData,
+        text: responsedData.text.toLocaleLowerCase(),
+      });
   } catch (error) {
     console.error(error);
   }

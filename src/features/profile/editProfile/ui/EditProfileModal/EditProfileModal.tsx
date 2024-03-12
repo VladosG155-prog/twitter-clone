@@ -4,9 +4,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { selectUser } from "@/entities/session";
 import { UPDATE_PROFILE } from "@/features/profile/model/actions";
-import CloseIcon from "@/shared/assets/icons/close.svg?react";
 import { useAppDispatch, useAppSelector } from "@/shared/model/hooks";
 import { Avatar, Button, ImageWithUpload, Input } from "@/shared/ui";
+import { Icon } from "@/shared/ui/Icon/Icon";
 
 import { userFields } from "../../config";
 import { EditProfileScheme } from "../../model/EditProfileScheme";
@@ -41,7 +41,7 @@ export const EditProfileModal: FC<IEditModalProps> = ({ onClose }) => {
     console.log(data);
     dispatch(
       UPDATE_PROFILE({
-        userData: { ...data, id: user.id },
+        userData: { ...data, id: user.id, phone: data.tel },
         userAvatar: file || undefined,
       })
     );
@@ -52,11 +52,16 @@ export const EditProfileModal: FC<IEditModalProps> = ({ onClose }) => {
       <div className="sticky border-b-2 border-gray-300 p-5 top-0 left-0 w-full bg-opacity-0  flex items-center justify-between">
         <i
           onClick={onClose}
-          className="w-10 h-10 flex justify-center rounded-full transition-all cursor-pointer items-center hover:bg-gray-300"
+          className="w-10 h-10 flex justify-center rounded-full transition-all cursor-pointer items-center hover:bg-gray-300 dark:hover:bg-gray-500"
         >
-          <CloseIcon width={15} height={15} />
+          <Icon
+            name="close"
+            width={15}
+            height={15}
+            className="text-white dark:fill-white "
+          />
         </i>
-        <h2 className="font-bold text-xl">Edit profile</h2>
+        <h2 className="font-bold text-1.75xl text-white ">Edit profile</h2>
         <Button
           text="Save"
           type="submit"

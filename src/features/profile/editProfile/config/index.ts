@@ -2,6 +2,7 @@ export const userFields = [
   { fieldName: "name", placeholder: "Name" },
   { fieldName: "tel", placeholder: "Phone number" },
   { fieldName: "email", placeholder: "Email" },
+  { fieldName: "bio", placeholder: "Bio" },
   { fieldName: "password", placeholder: "Password", type: "password" },
 ];
 

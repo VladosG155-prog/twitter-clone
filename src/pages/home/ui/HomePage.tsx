@@ -1,37 +1,25 @@
 import { useEffect } from "react";
 
 import { GET_TWEETS } from "@/entities/tweet/model/actions";
-import { ITweet } from "@/entities/tweet/types";
+import { TweetsList } from "@/entities/tweet/ui/TweetsList/TweetsList";
 import { TweetInput } from "@/features/tweet/addTweet/ui/TweetInput";
-import { useAppDispatch, useAppSelector } from "@/shared/model/hooks";
-import { LikeTweetCard } from "@/widgets/LikeTweetCard/ui/LikeTweetCard";
+import { useAppDispatch } from "@/shared/model/hooks";
+import { PageHeader } from "@/widgets/PageHeader/PageHeader";
 
 export const HomePage = () => {
   const dispatch = useAppDispatch();
-
-  const tweets = useAppSelector((state) => state.tweets.tweets);
 
   useEffect(() => {
     dispatch(GET_TWEETS({}));
   }, []);
 
   return (
-    <div>
+    <div className="border-x border-gray-400">
+      <PageHeader>
+        <h4 className="text-1.75xl font-robotoSerif font-bold">Home</h4>
+      </PageHeader>
       <TweetInput />
-      {tweets.length > 0 &&
-        tweets.map(
-          ({ user, createdAt, text, image, id, userLikesIds }: ITweet) => (
-            <LikeTweetCard
-              key={id}
-              user={user}
-              image={image}
-              userLikesIds={userLikesIds}
-              createdAt={createdAt}
-              text={text}
-              postId={id}
-            />
-          )
-        )}
+      <TweetsList />
     </div>
   );
 };

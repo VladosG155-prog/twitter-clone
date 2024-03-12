@@ -3,4 +3,5 @@ export interface IUserCardProps {
   name: string;
   isCurrentUser?: boolean;
   userId: string;
+  isShowFollowBtn?: boolean;
 }

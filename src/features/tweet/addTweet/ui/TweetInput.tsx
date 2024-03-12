@@ -10,6 +10,8 @@ import { Avatar } from "@/shared/ui/Avatar/Avatar";
 export const TweetInput = () => {
   const user = useAppSelector(selectUser);
   const dispatch = useAppDispatch();
+  const { isLoading, tweets } = useAppSelector((state) => state.tweets);
+
   const [file, setFile] = useState<File | null>(null);
   const [text, setText] = useState("");
 
@@ -25,11 +27,16 @@ export const TweetInput = () => {
         <Avatar url={user?.avatar} />
       </div>
       <div className="flex-1 relative">
+        {isLoading && tweets.length > 0 && (
+          <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden relative">
+            <div className="h-full bg-primary w-32 absolute animate-run"></div>
+          </div>
+        )}
         <textarea
           value={text}
           onChange={(e) => setText(e.target.value)}
           placeholder="What’s happening"
-          className="resize-none w-full border-b border-gray-300 mb-5 h-28 text-1.5xl p-5 font-semibold text-gray-300 dark:bg-black font-roboto"
+          className="resize-none w-full border-b border-gray-300 mb-5 h-28 text-1.5xl p-5 font-semibold text-gray-300 dark:bg-black font-roboto outline-primary outline-1"
         />
         <div className="w-full flex justify-between items-center">
           <AddPicture value={file} onChange={setFile} />
@@ -39,7 +46,7 @@ export const TweetInput = () => {
             onClick={handleClickTweet}
             variant="primary"
             disabled={!text.length}
-            className="mb-0 max-w-[116px]"
+            className="mb-0 max-w-[116px] disabled:opacity-55 disabled:hover:bg-opacity-100"
           />
         </div>
       </div>

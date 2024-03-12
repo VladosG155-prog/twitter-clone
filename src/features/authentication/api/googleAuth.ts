@@ -17,6 +17,7 @@ export const googleAuth = async () => {
     const responseUser = await addDoc(collection(db, "users"), {
       name: user.user.displayName,
       email: user.user.email,
+      bio: "",
       phone: user.user.phoneNumber,
       profileId: "@" + generateSlug(),
       avatar: user.user.photoURL,

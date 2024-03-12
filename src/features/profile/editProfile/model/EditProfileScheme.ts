@@ -10,4 +10,5 @@ export const EditProfileScheme: ZodType<IEditProfileFormData> = z.object({
   month: z.string(),
   year: z.string(),
   day: z.string(),
+  bio: z.string(),
 });

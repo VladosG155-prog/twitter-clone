@@ -11,9 +11,13 @@ export const editProfileRequest = async (
 
   await userItemRef.update({
     ...userData,
-    avatar: imageUrl || "",
   });
 
+  if (userAvatar) {
+    await userItemRef.update({
+      avatar: imageUrl,
+    });
+  }
   const user = await userItemRef.get();
   return user.data() as IUser;
 };

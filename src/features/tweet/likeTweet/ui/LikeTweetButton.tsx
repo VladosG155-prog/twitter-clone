@@ -2,8 +2,8 @@ import { FC, useId } from "react";
 import classNames from "classnames";
 
 import { LIKE_TWEET } from "@/entities/tweet/model/actions";
-import Like from "@/shared/assets/icons/like.svg?react";
 import { useAppDispatch } from "@/shared/model/hooks";
+import { Icon } from "@/shared/ui/Icon/Icon";
 
 import { ILikeTweetButtonProps } from "./interfaces";
 
@@ -39,7 +39,10 @@ export const LikeTweetButton: FC<ILikeTweetButtonProps> = ({
         htmlFor={id}
         className="group-hover/item:bg-pink-500 rounded-full transition-all group-hover/item:bg-opacity-25"
       >
-        <Like className="like-heart text-gray-400 group-hover/item:text-pink-500" />
+        <Icon
+          name="like"
+          className="like-heart text-gray-400 group-hover/item:text-pink-500"
+        />
       </label>
       <span
         className={classNames("group-hover/item:text-pink-500", {

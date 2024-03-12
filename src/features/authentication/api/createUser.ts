@@ -19,6 +19,7 @@ export const createUser = async (userInfo: IRegistrationFormData) => {
     phone: tel,
     avatar: user.user.photoURL,
     profileId: "@" + generateSlug(),
+    bio: "",
     dateOfBirthday: new Date(+year, +month, +day),
   });
 

@@ -22,7 +22,7 @@ export const Modal: FC<IModalProps> = ({ children, isOpen, onClose }) => {
 
   return createPortal(
     <div className="fixed left-0 right-0 bottom-0 top-0 overflow-y-scroll bg-opacity-20 bg-primary flex justify-center items-center">
-      <div ref={ref} className="bg-white rounded-lg w-[500px]">
+      <div ref={ref} className="bg-white dark:bg-darkBg rounded-lg w-[500px]">
         {children}
       </div>
     </div>,

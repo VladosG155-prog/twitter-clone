@@ -1,13 +1,13 @@
 import { FC } from "react";
 
-import ImageIcon from "@/shared/assets/icons/image.svg?react";
+import { Icon } from "../Icon/Icon";
 
 import { IAddPictureProps } from "./types";
 
 export const AddPicture: FC<IAddPictureProps> = ({ value, onChange }) => {
   return (
     <label htmlFor="img" className="cursor-pointer">
-      <ImageIcon />
+      <Icon name="image" />
       {value?.name}
       <input
         type="file"

@@ -18,7 +18,7 @@ export const TweetCard: FC<ITweetCardProps> = (props) => {
           <span>{user?.profileId}</span>
           <span> {dateCreatedAt}</span>
         </div>
-        <p>{text}</p>
+        <p className="mb-5">{text}</p>
         {image && (
           <img
             src={image}
