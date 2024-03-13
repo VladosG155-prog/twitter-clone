@@ -1,5 +1,5 @@
 import { PayloadAction } from "@reduxjs/toolkit";
-import { call, put, takeLeading } from "redux-saga/effects";
+import { call, put, takeLatest } from "redux-saga/effects";
 
 import { fetchTweets } from "../api/fetchTweets";
 
@@ -22,5 +22,5 @@ export function* getTweets(
 }
 
 export function* watchGetTweets() {
-  yield takeLeading(GET_TWEETS, getTweets);
+  yield takeLatest(GET_TWEETS, getTweets);
 }

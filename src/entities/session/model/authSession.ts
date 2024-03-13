@@ -11,6 +11,7 @@ export function* isLoggedIn() {
   try {
     yield put(appSlice.actions.setLoader(true));
     const user: IUser = yield call(checkUserSession);
+    console.log(user);
 
     yield put(sessionSlice.actions.setUser(user));
 

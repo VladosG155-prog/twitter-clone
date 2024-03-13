@@ -1,4 +1,4 @@
-import { disableNetwork, enableNetwork, Timestamp } from "firebase/firestore";
+import { Timestamp } from "firebase/firestore";
 
 import { db } from "@/shared/api/firebase/instance";
 
@@ -9,22 +9,19 @@ export const fetchTweets = async (userId?: string) => {
     const findedUser = db.collection("users").doc(userId);
 
     const currentTweets = db.collection("tweets").orderBy("createdAt", "desc");
-    await disableNetwork(db);
-
-    currentTweets.onSnapshot({ includeMetadataChanges: true }, () => null);
 
     const userTweets = await currentTweets
       .where("user", "==", findedUser)
-
-      .get();
+      .get({ source: "cache" });
 
     const allTweets = await currentTweets.get();
-    await enableNetwork(db);
+
     const docs = userId ? userTweets : allTweets;
+
+    console.log("@fromCache", docs.metadata.fromCache);
 
     const promiseArr = docs.docs.map(async (doc): Promise<ITweet> => {
       const { text, user, createdAt, userLikesIds, image, id } = doc.data();
-      console.log("@fromCache", docs.metadata.fromCache);
 
       const userData = (await user.get()).data();
 

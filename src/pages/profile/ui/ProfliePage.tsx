@@ -18,27 +18,33 @@ import { ProfileInfo } from "./ProfileInfo/ProfileInfo";
 
 export const ProfilePage = () => {
   const user = useAppSelector(selectUser);
+  console.log("@user", user);
+
   const { tweets } = useAppSelector((state) => state.tweets);
   const dispatch = useAppDispatch();
 
   const [activeUser, setActiveUser] = useState<IUser>(user);
 
-  const params = useParams();
-  console.log("@rerender");
+  const { profileId } = useParams();
+
   useEffect(() => {
-    if (!params.profileId) {
+    console.log("@profileId", profileId);
+
+    if (!profileId && user) {
       setActiveUser(user);
       return;
     }
-    getUserProfile(params.profileId).then((user) => {
-      setActiveUser(user);
+    getUserProfile(profileId!).then((user) => {
+      setActiveUser(user!);
+      console.log("@user", user);
     });
-  }, [params.profileId]);
+  }, [profileId]);
 
   useEffect(() => {
+    if (!activeUser.id) return;
     dispatch(tweetSlice.actions.saveTweets([]));
     dispatch(GET_TWEETS({ userId: activeUser.id }));
-  }, [activeUser.id]);
+  }, [activeUser]);
 
   return (
     <div>

@@ -4,4 +4,5 @@ export interface IUserCardProps {
   isCurrentUser?: boolean;
   userId: string;
   isShowFollowBtn?: boolean;
+  isSmallCard?: boolean;
 }

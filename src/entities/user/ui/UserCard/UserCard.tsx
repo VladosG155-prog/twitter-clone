@@ -1,4 +1,5 @@
 import { FC } from "react";
+import classNames from "classnames";
 
 import { Avatar } from "@/shared/ui";
 
@@ -10,9 +11,14 @@ export const UserCard: FC<IUserCardProps> = ({
   userId,
   isCurrentUser = false,
   isShowFollowBtn = true,
+  isSmallCard = false,
 }) => {
   return (
-    <div className="flex mb-5 py-5 items-center">
+    <div
+      className={classNames("flex mb-5 py-5 items-center", {
+        "py-0": isSmallCard,
+      })}
+    >
       <Avatar url={avatar} />
       <div className="ml-5">
         <h5 className="font-semibold text-base">{name}</h5>

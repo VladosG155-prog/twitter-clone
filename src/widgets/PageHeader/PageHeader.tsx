@@ -25,7 +25,7 @@ export const PageHeader: FC<IPageHeaderProps> = ({ children }) => {
   const isChecked = theme === THEME.DARK;
 
   return (
-    <div className="flex justify-between pr-10 px-3 py-4">
+    <div className="flex justify-between pr-10 px-3 py-4 pl-5">
       <div>{children}</div>
       <Switch checked={isChecked} onChange={changeTheme} />
     </div>

@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { REGISTRATION } from "@/entities/session/model/actions";
@@ -31,8 +31,11 @@ export const RegistrationForm = () => {
 
   const dispatch = useAppDispatch();
 
+  const navigate = useNavigate();
+
   const onSubmit = (data: IRegistrationFormData) => {
     dispatch(REGISTRATION(data));
+    navigate(ROUTES.AUTH);
   };
 
   const [year, month] = watch(["year", "month"]);

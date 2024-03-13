@@ -1,7 +1,7 @@
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { addDoc, collection, updateDoc } from "firebase/firestore";
 
-import { auth, db } from "@/shared/api/firebase/instance";
+import { auth, client, db } from "@/shared/api/firebase/instance";
 import { generateSlug } from "@/shared/lib/generateRandomProfileId/randomProfileId";
 
 import { IRegistrationFormData } from "../registration/types";
@@ -26,6 +26,19 @@ export const createUser = async (userInfo: IRegistrationFormData) => {
   const responseUserWithId = await updateDoc(responseUser, {
     id: responseUser.id,
   });
+
+  const userInfoResponse = await db
+    .collection("users")
+    .doc(responseUser.id)
+    .get();
+
+  await client
+    .collections("users")
+    .documents()
+    .create({
+      ...userInfoResponse.data(),
+      avatar: userInfoResponse.data()?.avatar || "",
+    });
 
   return responseUserWithId;
 };

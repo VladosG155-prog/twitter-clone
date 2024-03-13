@@ -5,6 +5,7 @@ import { LoginPage } from "@/pages/login/ui/LoginPage";
 import { ProfilePage } from "@/pages/profile/ui/ProfliePage";
 import { RegistrationPage } from "@/pages/registration";
 import { StartPage } from "@/pages/start";
+import { TweetPage } from "@/pages/tweet/ui/TweetPage";
 import { ROUTES } from "@/shared/const/routes";
 
 import { BaseLayout } from "./layouts/baseLayout";
@@ -13,6 +14,7 @@ import { AuthGuard, GuestGuard } from "./guards";
 export const appRouter = createBrowserRouter([
   {
     path: ROUTES.BASE,
+    errorElement: <h1>Error</h1>,
     element: (
       <AuthGuard>
         <StartPage />
@@ -37,6 +39,7 @@ export const appRouter = createBrowserRouter([
   },
   {
     element: <BaseLayout />,
+
     children: [
       {
         index: true,
@@ -53,6 +56,14 @@ export const appRouter = createBrowserRouter([
         element: (
           <GuestGuard>
             <ProfilePage />
+          </GuestGuard>
+        ),
+      },
+      {
+        path: ROUTES.TWEETS + "/:tweetId",
+        element: (
+          <GuestGuard>
+            <TweetPage />
           </GuestGuard>
         ),
       },

@@ -1,7 +1,7 @@
 import { signInWithPopup } from "firebase/auth";
 import { addDoc, collection, updateDoc } from "firebase/firestore";
 
-import { auth, db, provider } from "@/shared/api/firebase/instance";
+import { auth, client, db, provider } from "@/shared/api/firebase/instance";
 import { generateSlug } from "@/shared/lib/generateRandomProfileId/randomProfileId";
 
 export const googleAuth = async () => {
@@ -12,6 +12,7 @@ export const googleAuth = async () => {
       .collection("users")
       .where("email", "==", user.user.email)
       .get();
+
     if (!isUserExist.empty) return;
 
     const responseUser = await addDoc(collection(db, "users"), {
@@ -27,6 +28,18 @@ export const googleAuth = async () => {
     const responseUserWithId = await updateDoc(responseUser, {
       id: responseUser.id,
     });
+
+    const userInfoResponse = await db
+      .collection("users")
+      .doc(responseUser.id)
+      .get();
+
+    await client
+      .collections("users")
+      .documents()
+      .create({
+        ...userInfoResponse.data(),
+      });
 
     return responseUserWithId;
   } catch (error) {

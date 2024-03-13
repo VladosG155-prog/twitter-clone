@@ -4,10 +4,14 @@ import { ISwitchProps } from "./types";
 
 export const Switch: FC<ISwitchProps> = ({ onChange, checked }) => {
   return (
-    <label className="inline-flex items-center cursor-pointer">
+    <label
+      data-testid="switch"
+      className="inline-flex items-center cursor-pointer"
+    >
       <input
         onClick={onChange}
         type="checkbox"
+        onChange={() => null}
         checked={checked}
         className="sr-only peer"
       />

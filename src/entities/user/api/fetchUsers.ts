@@ -3,8 +3,6 @@ import { db } from "@/shared/api/firebase/instance";
 
 export const fetchUsers = async (userId: string) => {
   try {
-    console.log(userId);
-
     const usersCollectionRef = db
       .collection("users")
       .where("profileId", "!=", userId);

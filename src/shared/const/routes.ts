@@ -4,4 +4,5 @@ export const ROUTES = {
   AUTH: "/auth",
   HOME: "/home",
   REGISTRATION: "/registration",
+  TWEETS: "/tweets",
 };
