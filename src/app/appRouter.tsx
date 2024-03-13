@@ -1,35 +1,20 @@
-import { ReactElement } from "react";
-import { createBrowserRouter, Navigate } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 
+import { HomePage } from "@/pages/home/ui/HomePage";
 import { LoginPage } from "@/pages/login/ui/LoginPage";
+import { ProfilePage } from "@/pages/profile/ui/ProfliePage";
 import { RegistrationPage } from "@/pages/registration";
 import { StartPage } from "@/pages/start";
+import { TweetPage } from "@/pages/tweet/ui/TweetPage";
 import { ROUTES } from "@/shared/const/routes";
-import { useAppSelector } from "@/shared/model/hooks";
 
-interface IGuardProps {
-  children: ReactElement;
-}
-
-const GuestGuard = ({ children }: IGuardProps) => {
-  const isAuthorized = useAppSelector((state) => state.session.user);
-
-  if (!isAuthorized) return <Navigate to={ROUTES.AUTH} />;
-
-  return children;
-};
-
-const AuthGuard = ({ children }: IGuardProps) => {
-  const isAuthorized = useAppSelector((state) => state.session.user);
-
-  if (isAuthorized) return <Navigate to={ROUTES.HOME} />;
-
-  return children;
-};
+import { BaseLayout } from "./layouts/baseLayout";
+import { AuthGuard, GuestGuard } from "./guards";
 
 export const appRouter = createBrowserRouter([
   {
     path: ROUTES.BASE,
+    errorElement: <h1>Error</h1>,
     element: (
       <AuthGuard>
         <StartPage />
@@ -51,5 +36,45 @@ export const appRouter = createBrowserRouter([
         <LoginPage />
       </AuthGuard>
     ),
+  },
+  {
+    element: <BaseLayout />,
+
+    children: [
+      {
+        index: true,
+        path: ROUTES.PROFILE,
+
+        element: (
+          <GuestGuard>
+            <ProfilePage />
+          </GuestGuard>
+        ),
+      },
+      {
+        path: ROUTES.PROFILE + "/:profileId",
+        element: (
+          <GuestGuard>
+            <ProfilePage />
+          </GuestGuard>
+        ),
+      },
+      {
+        path: ROUTES.TWEETS + "/:tweetId",
+        element: (
+          <GuestGuard>
+            <TweetPage />
+          </GuestGuard>
+        ),
+      },
+      {
+        path: ROUTES.HOME,
+        element: (
+          <GuestGuard>
+            <HomePage />
+          </GuestGuard>
+        ),
+      },
+    ],
   },
 ]);

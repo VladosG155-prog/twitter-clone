@@ -1,14 +1,15 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { User } from "firebase/auth";
+
+import { IUser } from "../types";
 
 interface IState {
-  user: User | null;
+  profile?: IUser;
   isLoading: boolean;
 }
 
 const initialState: IState = {
-  user: null,
   isLoading: false,
+  profile: undefined,
 };
 
 export const sessionSlice = createSlice({
@@ -18,8 +19,14 @@ export const sessionSlice = createSlice({
     userLoading: (state, action) => {
       state.isLoading = action.payload;
     },
-    setUser: (state, action: PayloadAction<User>) => {
-      state.user = action.payload;
+    setUser: (state, action: PayloadAction<IUser | undefined>) => {
+      state.profile = action.payload;
     },
   },
+  selectors: {
+    selectUser: (state) => state.profile!,
+    selectSession: (state) => state,
+  },
 });
+
+export const { selectUser, selectSession } = sessionSlice.selectors;
