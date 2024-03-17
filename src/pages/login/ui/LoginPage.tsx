@@ -1,14 +1,29 @@
+import { Link } from "react-router-dom";
+
+import { LOGIN } from "@/entities/session/model/actions";
+import { IAuthFormData } from "@/features/authentication/login/types";
 import { LoginForm } from "@/features/authentication/login/ui/LoginForm";
-import TwitterIcon from "@/shared/assets/icons/twitter.svg?react";
+import { ROUTES } from "@/shared/const/routes";
+import { useAppDispatch } from "@/shared/model/hooks";
+import { Icon } from "@/shared/ui/Icon/Icon";
 
 export const LoginPage = () => {
+  const dispatch = useAppDispatch();
+
+  const handleSubmit = (data: IAuthFormData) => {
+    dispatch(LOGIN(data));
+  };
+
   return (
-    <div className="flex h-[100vh] w-[650px] flex-col m-auto justify-center items-center">
-      <TwitterIcon width={50} height={41} className="text-primary" />
-      <h1 className="font-bold text-start self-start text-2xl mb-5">
+    <div className="m-auto flex h-[100vh] w-[650px] flex-col items-center justify-center">
+      <Icon name="twitter" width={50} height={41} className="text-primary" />
+      <h1 className="mb-5 self-start text-start text-2xl font-bold">
         Log in to Twitter
       </h1>
-      <LoginForm />
+      <LoginForm onSubmit={handleSubmit} />
+      <Link className="text-primary self-end hover:opacity-65" to={ROUTES.BASE}>
+        Sign up to Twitter
+      </Link>
     </div>
   );
 };

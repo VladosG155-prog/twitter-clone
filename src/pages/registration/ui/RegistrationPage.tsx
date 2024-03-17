@@ -1,13 +1,22 @@
+import { REGISTRATION } from "@/entities/session/model/actions";
+import { IRegistrationFormData } from "@/features/authentication/registration/types";
 import { RegistrationForm } from "@/features/authentication/registration/ui/RegistrationForm";
-import TwitterIcon from "@/shared/assets/icons/twitter.svg?react";
+import { useAppDispatch } from "@/shared/model/hooks";
+import { Icon } from "@/shared/ui/Icon/Icon";
 export const RegistrationPage = () => {
+  const dispatch = useAppDispatch();
+
+  const onSubmit = (data: IRegistrationFormData) => {
+    dispatch(REGISTRATION(data));
+  };
+
   return (
-    <div className="flex h-[100vh] w-[650px] flex-col m-auto justify-center items-center">
-      <TwitterIcon width={50} height={41} className="text-primary" />
-      <h1 className="font-bold text-start self-start text-2xl mb-5">
+    <div className="m-auto flex h-[100vh] w-[650px] flex-col items-center justify-center">
+      <Icon name="twitter" width={50} height={41} className="text-primary" />
+      <h1 className="mb-5 self-start text-start text-2xl font-bold">
         Create an account
       </h1>
-      <RegistrationForm />
+      <RegistrationForm onSubmit={onSubmit} />
     </div>
   );
 };

@@ -1,6 +1,8 @@
 export const ROUTES = {
   BASE: "/",
-  HOME: "/home",
+  PROFILE: "/profile",
   AUTH: "/auth",
+  HOME: "/home",
   REGISTRATION: "/registration",
+  TWEETS: "/tweets",
 };

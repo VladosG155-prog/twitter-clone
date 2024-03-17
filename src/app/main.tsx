@@ -1,21 +1,18 @@
-import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import { RouterProvider } from "react-router-dom";
 
-import { ISLOGGEDIN } from "@/entities/session/model/actions.ts";
+import { ISLOGGEDIN } from "@/entities/session/model/actions";
 
-import { store } from "./store/index.ts";
-import { appRouter } from "./appRouter.tsx";
+import { appRouter } from "./appRouter";
+import { store } from "./store";
 
 import "./styles/global.css";
 
 store.dispatch(ISLOGGEDIN());
 
 createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <Provider store={store}>
-      <RouterProvider router={appRouter} />
-    </Provider>
-  </StrictMode>
+  <Provider store={store}>
+    <RouterProvider router={appRouter} />
+  </Provider>
 );

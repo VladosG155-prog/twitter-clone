@@ -1,18 +1,23 @@
-import { User } from "firebase/auth";
 import { call, put, takeEvery } from "redux-saga/effects";
 
+import { appSlice } from "@/entities/app/model/slice";
 import { sessionSlice } from "@/entities/session";
 import { ISLOGGEDIN } from "@/entities/session/model/actions";
 
 import { checkUserSession } from "../api/checkUserSession";
+import { IUser } from "../types";
 
 export function* isLoggedIn() {
   try {
-    const user: User = yield call(checkUserSession);
-    console.log("user", user);
+    yield put(appSlice.actions.setLoader(true));
+    const user: IUser = yield call(checkUserSession);
 
     yield put(sessionSlice.actions.setUser(user));
+
+    yield put(appSlice.actions.setLoader(false));
   } catch (error) {
+    yield put(sessionSlice.actions.setUser(undefined));
+    yield put(appSlice.actions.setLoader(false));
     console.error(error);
   }
 }

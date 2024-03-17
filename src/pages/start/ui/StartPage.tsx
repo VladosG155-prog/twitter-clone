@@ -1,7 +1,7 @@
 import twitterImage from "@/shared/assets/OnBoardImage.png";
 
-import { Footer } from "./Footer";
-import { RightSection } from "./RightSection";
+import { Footer } from "./Footer/Footer";
+import { RightSection } from "./RightSection/RightSection";
 
 export const StartPage = () => {
   return (

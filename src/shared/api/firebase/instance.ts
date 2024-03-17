@@ -1,14 +1,33 @@
-import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import firebase from "firebase/compat/app";
+import { getStorage } from "firebase/storage";
+import Typesense from "typesense";
+
+import "firebase/compat/firestore";
 
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_apiKey,
-  authDomain: import.meta.env.VITE_authDomain,
-  projectId: import.meta.env.VITE_projectId,
-  storageBucket: import.meta.env.VITE_storageBucket,
-  messagingSenderId: import.meta.env.VITE_messagingSenderId,
-  appId: import.meta.env.VITE_appId,
+  apiKey: process.env.VITE_apiKey || "mock",
+  authDomain: process.env.VITE_authDomain || "mock",
+  projectId: process.env.VITE_projectId || "mock",
+  storageBucket: process.env.VITE_storageBucket || "mock",
+  messagingSenderId: process.env.VITE_messagingSenderId || "mock",
+  appId: process.env.VITE_appId || "mock",
 };
 
-const app = initializeApp(firebaseConfig);
+export const app = firebase.initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+export const provider = new GoogleAuthProvider();
+export const db = firebase.firestore(app);
+export const storage = getStorage(app);
+
+export const client = new Typesense.Client({
+  nodes: [
+    {
+      host: "cq70go6iru1fk8n4p-1.a1.typesense.net",
+      port: 443,
+      protocol: "https",
+    },
+  ],
+  apiKey: "1wSMAJMczXrEK0MYazlL68mHrJRDMma1",
+  connectionTimeoutSeconds: 2,
+});
