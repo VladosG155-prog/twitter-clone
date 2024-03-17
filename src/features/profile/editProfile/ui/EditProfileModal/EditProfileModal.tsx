@@ -25,10 +25,10 @@ export const EditProfileModal: FC<IEditModalProps> = ({ onClose }) => {
     resolver: zodResolver(EditProfileScheme),
     defaultValues: {
       name: user.name,
-      description: "",
+      bio: user.bio,
       profileId: user.profileId,
       password: "",
-      tel: user.phone,
+      phone: user.phone,
       email: user.email,
       month: "",
       day: "",
@@ -41,7 +41,7 @@ export const EditProfileModal: FC<IEditModalProps> = ({ onClose }) => {
     console.log(data);
     dispatch(
       UPDATE_PROFILE({
-        userData: { ...data, id: user.id, phone: data.tel },
+        userData: { ...data, id: user.id },
         userAvatar: file || undefined,
       })
     );

@@ -1,11 +1,9 @@
-import { useMemo } from "react";
+import { FC, useMemo } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { REGISTRATION } from "@/entities/session/model/actions";
 import { ROUTES } from "@/shared/const/routes";
-import { useAppDispatch } from "@/shared/model/hooks";
 import { Button, Input } from "@/shared/ui";
 import { Select } from "@/shared/ui/Select/Select";
 
@@ -13,11 +11,17 @@ import { getDays, MONTHS, userDateFields, userFields, YEARS } from "../config";
 import { RegistrationScheme } from "../model/registrationScheme";
 import { IRegistrationFormData } from "../types";
 
-import { IOption } from "./interfaces";
+import { IOption, IRegistrationFormProps } from "./types";
 
-export const RegistrationForm = () => {
-  const { handleSubmit, control, watch } = useForm<IRegistrationFormData>({
+export const RegistrationForm: FC<IRegistrationFormProps> = ({ onSubmit }) => {
+  const {
+    handleSubmit,
+    control,
+    watch,
+    formState: { errors },
+  } = useForm<IRegistrationFormData>({
     resolver: zodResolver(RegistrationScheme),
+    mode: "onBlur",
     defaultValues: {
       name: "",
       password: "",
@@ -29,13 +33,8 @@ export const RegistrationForm = () => {
     },
   });
 
-  const dispatch = useAppDispatch();
-
-  const navigate = useNavigate();
-
-  const onSubmit = (data: IRegistrationFormData) => {
-    dispatch(REGISTRATION(data));
-    navigate(ROUTES.AUTH);
+  const handleSumbitForm = (data: IRegistrationFormData) => {
+    onSubmit(data);
   };
 
   const [year, month] = watch(["year", "month"]);
@@ -48,8 +47,10 @@ export const RegistrationForm = () => {
     year: YEARS,
   };
 
+  const isSubmitDisabled = Object.keys(errors).length > 0;
+
   return (
-    <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
+    <form className="w-full">
       {userFields.map(({ fieldName, placeholder, type }) => (
         <Controller
           name={fieldName}
@@ -58,6 +59,7 @@ export const RegistrationForm = () => {
           render={({ field, fieldState }) => (
             <Input
               {...field}
+              role={fieldName}
               error={fieldState.error}
               placeholder={placeholder}
               type={type}
@@ -96,7 +98,14 @@ export const RegistrationForm = () => {
           />
         ))}
       </div>
-      <Button type="submit" text="Next" className="mt-3" />
+      <Button
+        onClick={handleSubmit(handleSumbitForm)}
+        disabled={isSubmitDisabled}
+        type="submit"
+        role="submit"
+        text="Next"
+        className="mt-3"
+      />
     </form>
   );
 };

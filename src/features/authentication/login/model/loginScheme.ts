@@ -1,6 +1,6 @@
 import { z, ZodType } from "zod";
 
-import { IAuthFormData } from "../../registration/types";
+import { IAuthFormData } from "../types";
 
 export const LoginScheme: ZodType<IAuthFormData> = z.object({
   email: z.string().email().min(10),

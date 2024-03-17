@@ -3,14 +3,16 @@ import { forwardRef, useId } from "react";
 import { IInputProps } from "./types";
 
 export const Input = forwardRef<HTMLInputElement, IInputProps>(
-  ({ placeholder, ...props }) => {
+  ({ placeholder, role, ...props }, ref) => {
     const { error } = props;
 
     const id = useId();
 
     return (
-      <div className="w-full relative mb-3">
+      <div data-testid="input" className="w-full relative mb-3">
         <input
+          role={role}
+          ref={ref}
           placeholder=" "
           id={id}
           className={

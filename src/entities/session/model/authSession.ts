@@ -11,12 +11,12 @@ export function* isLoggedIn() {
   try {
     yield put(appSlice.actions.setLoader(true));
     const user: IUser = yield call(checkUserSession);
-    console.log(user);
 
     yield put(sessionSlice.actions.setUser(user));
 
     yield put(appSlice.actions.setLoader(false));
   } catch (error) {
+    yield put(sessionSlice.actions.setUser(undefined));
     yield put(appSlice.actions.setLoader(false));
     console.error(error);
   }

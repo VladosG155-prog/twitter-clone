@@ -8,11 +8,16 @@ export const editProfileRequest = async (
   userData: Omit<IUser, "uid, "> & { password: string },
   userAvatar?: File
 ): Promise<IUser> => {
-  const userItemRef = await db.collection("users").doc(userData.id);
+  console.log(userData.id);
+
+  const userItemRef = db.collection("users").doc(userData.id);
   const imageUrl = await uploadFile(userAvatar);
 
+  const { password, ...userInfo } = userData;
+
   await userItemRef.update({
-    ...userData,
+    ...userInfo,
+    dateOfBirthday: new Date(),
   });
 
   if (userAvatar) {
@@ -21,8 +26,8 @@ export const editProfileRequest = async (
     });
   }
 
-  if (userData.password) {
-    await updatePassword(auth.currentUser!, userData.password);
+  if (password) {
+    await updatePassword(auth.currentUser!, password);
   }
 
   const user = await userItemRef.get();

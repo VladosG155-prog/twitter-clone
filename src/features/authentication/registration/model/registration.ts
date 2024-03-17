@@ -1,6 +1,7 @@
 import { PayloadAction } from "@reduxjs/toolkit";
 import { call, put, takeEvery } from "redux-saga/effects";
 
+import { appSlice } from "@/entities/app/model/slice";
 import { sessionSlice } from "@/entities/session";
 import {
   ISLOGGEDIN,
@@ -18,10 +19,16 @@ export function* registration(
   try {
     yield put(sessionSlice.actions.userLoading(true));
     yield call(createUser, data.payload);
-    yield put(sessionSlice.actions.userLoading(false));
   } catch (error) {
-    yield put(sessionSlice.actions.userLoading(false));
+    if (error instanceof Error) {
+      yield put(
+        appSlice.actions.addToast({ text: error.message, type: "error" })
+      );
+    }
+
     console.error("error", error);
+  } finally {
+    yield put(sessionSlice.actions.userLoading(false));
   }
 }
 

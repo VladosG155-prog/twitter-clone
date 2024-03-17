@@ -8,6 +8,7 @@ export default {
       roboto: ["Roboto", "sans-serif"],
       robotoSerif: ["Roboto-serif", "sans-serif"],
     },
+
     fontSize: {
       sm: "0.8125rem",
       base: "1rem",
@@ -20,7 +21,31 @@ export default {
       "4xl": "5.25rem",
     },
     extend: {
+      screens: {
+        sm: { max: "640px" },
+        md: { max: "768px" },
+        lg: { max: "1024px" },
+        xl: { max: "1280px" },
+        "2xl": { max: "1536px" },
+      },
       keyframes: {
+        fadeIn: {
+          "0%": { opacity: 0 },
+          "100%": { opacity: 1 },
+        },
+        fadeOut: {
+          "0%": { opacity: 1 },
+          "100%": { opacity: 0 },
+        },
+        minusWidth: {
+          "0%": { width: "100%" },
+          "100%": { width: "0%" },
+        },
+
+        mount: {
+          "0%": { transform: "translateX(-100px)", opacity: "0" },
+          "100%": { transform: "translateX(0px)", opacity: "100%" },
+        },
         wave: {
           "0%": { transform: "rotate(0.0deg)" },
           "10%": { transform: "rotate(14deg)" },
@@ -45,6 +70,10 @@ export default {
         },
       },
       animation: {
+        fadeOut: "fadeOut 1s ease-in-out 1",
+        fadeIn: "fadeIn .4s ease-in-out 1",
+        minusWidth: "minusWidth 2s linear 1",
+        mount: "mount .1s linear 1",
         wave: "wave 2s linear infinite",
         run: "run 1s linear infinite",
         skeleton: "skeleton 1s ease-in-out forwards infinite alternate",

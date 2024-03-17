@@ -4,6 +4,8 @@ import classNames from "classnames";
 
 import { Logout } from "@/features/authentication/logout/ui/Logout";
 import { TweetInput } from "@/features/tweet/addTweet/ui/TweetInput";
+import { SCREEN } from "@/shared/const/screens";
+import { useMediaQuery } from "@/shared/lib/hooks/useMediaQuery";
 import { Button, Modal } from "@/shared/ui";
 import { Icon } from "@/shared/ui/Icon/Icon";
 
@@ -12,8 +14,10 @@ import { links } from "../../config";
 export const SideBar = () => {
   const [isShowTweetModal, setIsShowTweetModal] = useState(false);
 
+  const isTablet = useMediaQuery(SCREEN.TABLET);
+
   return (
-    <div className="col-span-2 pt-8">
+    <div className="col-span-2 pt-8 md:flex md:flex-col md:items-center pl-3">
       <Icon
         name="twitter"
         width={50}
@@ -31,7 +35,7 @@ export const SideBar = () => {
           }
         >
           <Icon name={iconName} />
-          <span className="ml-5">{name}</span>
+          {!isTablet && <span className="ml-5 md:ml-0">{name}</span>}
         </NavLink>
       ))}
       <Modal

@@ -12,13 +12,11 @@ export const fetchTweets = async (userId?: string) => {
 
     const userTweets = await currentTweets
       .where("user", "==", findedUser)
-      .get({ source: "cache" });
+      .get();
 
     const allTweets = await currentTweets.get();
 
     const docs = userId ? userTweets : allTweets;
-
-    console.log("@fromCache", docs.metadata.fromCache);
 
     const promiseArr = docs.docs.map(async (doc): Promise<ITweet> => {
       const { text, user, createdAt, userLikesIds, image, id } = doc.data();

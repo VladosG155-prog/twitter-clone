@@ -5,11 +5,13 @@ import { IUser } from "../types";
 interface IState {
   profile?: IUser;
   isLoading: boolean;
+  error: string;
 }
 
 const initialState: IState = {
   isLoading: false,
   profile: undefined,
+  error: "",
 };
 
 export const sessionSlice = createSlice({
@@ -21,6 +23,9 @@ export const sessionSlice = createSlice({
     },
     setUser: (state, action: PayloadAction<IUser | undefined>) => {
       state.profile = action.payload;
+    },
+    setError: (state, action) => {
+      state.error = action.payload;
     },
   },
   selectors: {

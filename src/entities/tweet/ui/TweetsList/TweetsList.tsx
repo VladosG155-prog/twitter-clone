@@ -5,8 +5,8 @@ import { LikeTweetCard } from "@/widgets/LikeTweetCard/ui/LikeTweetCard";
 import { ITweet } from "../../types";
 
 export const TweetsList = () => {
-  const { tweets, isLoading } = useAppSelector((state) => state.tweets);
-
+  const tweets = useAppSelector((state) => state.tweets.tweets);
+  const isLoading = useAppSelector((state) => state.tweets.isLoading);
   return (
     <>
       {tweets.length > 0 &&

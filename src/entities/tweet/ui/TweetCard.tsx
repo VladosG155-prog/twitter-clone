@@ -21,8 +21,10 @@ export const TweetCard: FC<ITweetCardProps> = (props) => {
         <p className="mb-5">{text}</p>
         {image && (
           <img
+            width="100%"
+            height="auto"
             src={image}
-            alt=""
+            alt="Tweet Image"
             className="object-contain max-w-[500px] max-h-[500px]"
           />
         )}

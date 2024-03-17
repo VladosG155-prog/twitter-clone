@@ -6,10 +6,11 @@ import { IAddPictureProps } from "./types";
 
 export const AddPicture: FC<IAddPictureProps> = ({ value, onChange }) => {
   return (
-    <label htmlFor="img" className="cursor-pointer">
+    <label htmlFor="img" data-testid="addPicture" className="cursor-pointer">
       <Icon name="image" />
       {value?.name}
       <input
+        data-testid="addPictureInput"
         type="file"
         onChange={(e) => {
           if (!e.target.files) return;

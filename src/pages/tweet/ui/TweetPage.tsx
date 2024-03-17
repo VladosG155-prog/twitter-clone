@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { DocumentData } from "firebase/firestore";
 
 import { IUser } from "@/entities/session/types";
 import { ITweet } from "@/entities/tweet/types";
@@ -21,11 +22,8 @@ export const TweetPage = () => {
       .doc(tweetId)
       .get()
       .then((post) => {
-        console.log(post.data());
-
         const data = post.data();
-
-        data?.user.get().then((user) => {
+        data?.user.get().then((user: DocumentData) => {
           const userData = user.data() as IUser;
           setTweet({ ...(data as ITweet), user: userData });
           setIsLoading(false);
@@ -44,7 +42,8 @@ export const TweetPage = () => {
         <TweetCard
           text={tweet?.text || ""}
           image={tweet?.image || ""}
-          user={tweet?.user}
+          user={tweet!.user}
+          createdAt={tweet!.createdAt}
           userLikesIds={tweet?.userLikesIds || []}
         />
       )}

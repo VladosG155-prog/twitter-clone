@@ -5,4 +5,5 @@ export interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "outlined" | "primary" | "secondary";
   className?: string;
   icon?: ReactElement;
+  dataTest?: string;
 }

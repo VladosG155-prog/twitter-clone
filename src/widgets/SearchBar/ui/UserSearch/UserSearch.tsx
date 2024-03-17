@@ -14,15 +14,15 @@ export const UserSearch: FC<ISearchProps> = ({ searchValue }) => {
   const [isTyping, setIsTyping] = useState(false);
   useEffect(() => {
     setIsTyping(true);
+
     const getData = setTimeout(() => {
       client
-        .collections("users")
+        .collections<IUser>("users")
         .documents()
         .search({ q: searchValue.toLowerCase(), query_by: "profileId, name" })
         .then((user) => {
-          const usersArray = user.hits?.map((hit) => hit.document as IUser);
+          const usersArray = user.hits?.map((hit) => hit.document);
           setUsers(usersArray || []);
-
           setIsTyping(false);
         });
     }, 500);
@@ -31,7 +31,6 @@ export const UserSearch: FC<ISearchProps> = ({ searchValue }) => {
       clearTimeout(getData);
     };
   }, [searchValue]);
-  console.log(users);
 
   return (
     <div>
@@ -40,7 +39,7 @@ export const UserSearch: FC<ISearchProps> = ({ searchValue }) => {
           <div className="hover:bg-primary p-5 cursor-pointer">
             <UserCard
               name={user.name}
-              avatar={user.avatar?.length > 0 ? user.avatar : ""}
+              avatar={user.avatar || ""}
               userId={user.profileId}
               isSmallCard
               isShowFollowBtn={false}

@@ -10,3 +10,9 @@ declare module "*.svg" {
 declare type RootState = import("app/store").RootState;
 
 declare type AppDispatch = import("app/store").AppDispatch;
+
+declare namespace Cypress {
+  interface Chainable {
+    login(name: string): void;
+  }
+}

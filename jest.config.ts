@@ -4,6 +4,7 @@ export default {
   testEnvironment: "jsdom",
   setupFilesAfterEnv: ["<rootDir>/jest-setup.ts"],
   moduleNameMapper: {
+    "\\.(jpg|jpeg|png|svg)$": "<rootDir>/fileMock.ts",
     "^@/(.*)": "<rootDir>/src/$1",
     "^(.+\\.svg)\\?react$": "<rootDir>/svg.tsx",
     "^(.+\\.svg)$": "<rootDir>/svg.tsx",

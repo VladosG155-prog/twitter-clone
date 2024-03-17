@@ -6,7 +6,13 @@
 
 body {
   color: var(--text-primary);
-  transition: 0.3s all ease-in-out;
+  transition: 0.3s background ease-in-out;
+}
+
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
 }
 
 .like-heart {

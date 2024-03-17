@@ -43,6 +43,7 @@ export const TweetInput = () => {
 
           <Button
             text="Tweet"
+            dataTest="add-tweet-btn"
             onClick={handleClickTweet}
             variant="primary"
             disabled={!text.length}

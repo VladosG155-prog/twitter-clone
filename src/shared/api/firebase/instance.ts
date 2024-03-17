@@ -6,21 +6,20 @@ import Typesense from "typesense";
 import "firebase/compat/firestore";
 
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_apiKey,
-  authDomain: import.meta.env.VITE_authDomain,
-  projectId: import.meta.env.VITE_projectId,
-  storageBucket: import.meta.env.VITE_storageBucket,
-  messagingSenderId: import.meta.env.VITE_messagingSenderId,
-  appId: import.meta.env.VITE_appId,
+  apiKey: process.env.VITE_apiKey || "mock",
+  authDomain: process.env.VITE_authDomain || "mock",
+  projectId: process.env.VITE_projectId || "mock",
+  storageBucket: process.env.VITE_storageBucket || "mock",
+  messagingSenderId: process.env.VITE_messagingSenderId || "mock",
+  appId: process.env.VITE_appId || "mock",
 };
 
-const app = firebase.initializeApp(firebaseConfig);
-
+export const app = firebase.initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const provider = new GoogleAuthProvider();
 export const db = firebase.firestore(app);
 export const storage = getStorage(app);
-db.enablePersistence();
+
 export const client = new Typesense.Client({
   nodes: [
     {

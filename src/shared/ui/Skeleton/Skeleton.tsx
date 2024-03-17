@@ -1,6 +1,9 @@
 export const Skeleton = () => {
   return (
-    <div className="max-w-full mx-auto p-4 bg-white dark:bg-[#10171E] shadow-md rounded-md mt-4">
+    <div
+      className="max-w-full mx-auto p-4 bg-white dark:bg-[#10171E] shadow-md rounded-md mt-4"
+      data-testid="skeleton"
+    >
       <div className="flex items-center animate-skeleton">
         <div className="rounded-full bg-gray-300 animate-skeleton h-12 w-12 dark:bg-darkBg"></div>
         <div className="ml-2 flex gap-5">

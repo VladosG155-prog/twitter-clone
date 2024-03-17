@@ -18,8 +18,6 @@ import { ProfileInfo } from "./ProfileInfo/ProfileInfo";
 
 export const ProfilePage = () => {
   const user = useAppSelector(selectUser);
-  console.log("@user", user);
-
   const { tweets } = useAppSelector((state) => state.tweets);
   const dispatch = useAppDispatch();
 
@@ -28,23 +26,27 @@ export const ProfilePage = () => {
   const { profileId } = useParams();
 
   useEffect(() => {
-    console.log("@profileId", profileId);
+    console.log(2);
 
     if (!profileId && user) {
       setActiveUser(user);
       return;
     }
     getUserProfile(profileId!).then((user) => {
+      console.log(3);
+
       setActiveUser(user!);
-      console.log("@user", user);
     });
   }, [profileId]);
 
   useEffect(() => {
     if (!activeUser.id) return;
+
     dispatch(tweetSlice.actions.saveTweets([]));
     dispatch(GET_TWEETS({ userId: activeUser.id }));
   }, [activeUser]);
+
+  console.log("@rerender");
 
   return (
     <div>

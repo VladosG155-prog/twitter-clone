@@ -10,7 +10,7 @@ import { editProfileRequest } from "../api/EditProfileApi";
 
 export function* editProfile(
   action: PayloadAction<{
-    userData: IUser;
+    userData: IUser & { password: string };
     userAvatar?: File;
   }>
 ): Generator {
@@ -18,11 +18,24 @@ export function* editProfile(
   try {
     yield put(appSlice.actions.setLoader(true));
     const user = yield call(editProfileRequest, userData, userAvatar);
-    yield put(sessionSlice.actions.setUser(user));
-    yield put(appSlice.actions.setLoader(false));
+    yield put(sessionSlice.actions.setUser(user as IUser));
+    yield put(
+      appSlice.actions.addToast({
+        text: "Profile has been successfuly updated",
+        type: "success",
+      })
+    );
   } catch (error) {
+    if (error instanceof Error) {
+      yield put(
+        appSlice.actions.addToast({
+          text: error.message,
+          type: "error",
+        })
+      );
+    }
+  } finally {
     yield put(appSlice.actions.setLoader(false));
-    console.error("error", error);
   }
 }
 
