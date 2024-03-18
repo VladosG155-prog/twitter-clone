@@ -32,6 +32,7 @@ export const SearchBar = () => {
       .finally(() => {
         dispatch(appSlice.actions.setLoader(false));
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user?.profileId]);
 
   const handleInputChange = (val: string) => {
