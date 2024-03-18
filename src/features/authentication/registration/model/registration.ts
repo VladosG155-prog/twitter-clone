@@ -19,6 +19,12 @@ export function* registration(
   try {
     yield put(sessionSlice.actions.userLoading(true));
     yield call(createUser, data.payload);
+    yield put(
+      appSlice.actions.addToast({
+        text: "successfuly registration",
+        type: "success",
+      })
+    );
   } catch (error) {
     if (error instanceof Error) {
       yield put(

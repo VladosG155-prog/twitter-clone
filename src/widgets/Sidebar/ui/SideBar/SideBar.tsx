@@ -29,27 +29,32 @@ export const SideBar = () => {
           key={name}
           to={"/" + name.toLowerCase()}
           className={({ isActive }) =>
-            classNames("flex mb-8 items-center hover:font-bold", {
+            classNames("flex mb-8 items-center md:w-[30%] hover:font-bold", {
               "font-bold": isActive,
+              "justify-between": isTablet,
             })
           }
         >
           <Icon name={iconName} />
-          {!isTablet && <span className="ml-5 md:ml-0">{name}</span>}
+          <span className="ml-5 md:ml-auto">{name}</span>
         </NavLink>
       ))}
-      <Modal
-        onClose={() => setIsShowTweetModal(false)}
-        isOpen={isShowTweetModal}
-      >
-        <TweetInput />
-      </Modal>
-      <Button
-        variant="primary"
-        text="Tweet"
-        onClick={() => setIsShowTweetModal(true)}
-      />
-      <Logout />
+      {!isTablet && (
+        <>
+          <Modal
+            onClose={() => setIsShowTweetModal(false)}
+            isOpen={isShowTweetModal}
+          >
+            <TweetInput />
+          </Modal>
+          <Button
+            variant="primary"
+            text="Tweet"
+            onClick={() => setIsShowTweetModal(true)}
+          />
+          <Logout />
+        </>
+      )}
     </div>
   );
 };

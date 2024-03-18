@@ -3,7 +3,7 @@ import classNames from "classnames";
 
 import { LIKE_TWEET } from "@/entities/tweet/model/actions";
 import { useAppDispatch } from "@/shared/model/hooks";
-import { Icon } from "@/shared/ui/Icon/Icon";
+import { Icon } from "@/shared/ui/";
 
 import { ILikeTweetButtonProps } from "./interfaces";
 

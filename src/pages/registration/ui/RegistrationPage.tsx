@@ -2,7 +2,8 @@ import { REGISTRATION } from "@/entities/session/model/actions";
 import { IRegistrationFormData } from "@/features/authentication/registration/types";
 import { RegistrationForm } from "@/features/authentication/registration/ui/RegistrationForm";
 import { useAppDispatch } from "@/shared/model/hooks";
-import { Icon } from "@/shared/ui/Icon/Icon";
+import { Icon } from "@/shared/ui/";
+
 export const RegistrationPage = () => {
   const dispatch = useAppDispatch();
 

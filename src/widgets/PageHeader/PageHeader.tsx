@@ -3,7 +3,7 @@ import { FC } from "react";
 import { appSlice } from "@/entities/app/model/slice";
 import { THEME } from "@/shared/const/theme";
 import { useAppDispatch, useAppSelector } from "@/shared/model/hooks";
-import { Switch } from "@/shared/ui/Switch/Switch";
+import { Switch } from "@/shared/ui/";
 
 import { IPageHeaderProps } from "./types";
 

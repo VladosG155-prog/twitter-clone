@@ -8,8 +8,6 @@ export const editProfileRequest = async (
   userData: Omit<IUser, "uid, "> & { password: string },
   userAvatar?: File
 ): Promise<IUser> => {
-  console.log(userData.id);
-
   const userItemRef = db.collection("users").doc(userData.id);
   const imageUrl = await uploadFile(userAvatar);
 

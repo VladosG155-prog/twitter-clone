@@ -1,6 +1,6 @@
 import { useAppSelector } from "@/shared/model/hooks";
-import { Skeleton } from "@/shared/ui/Skeleton/Skeleton";
-import { LikeTweetCard } from "@/widgets/LikeTweetCard/ui/LikeTweetCard";
+import { Skeleton } from "@/shared/ui/";
+import { LikeTweetCard } from "@/widgets/";
 
 import { ITweet } from "../../types";
 
