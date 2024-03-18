@@ -7,6 +7,7 @@ export default defineConfig((props) => {
   const env = loadEnv(props.mode, process.cwd(), "VITE");
   const envWithProcessPrefix = {
     "process.env": `${JSON.stringify(env)}`,
+    __APP_ENV__: process.env.VITE_VERCEL_ENV,
   };
 
   return {
