@@ -29,15 +29,15 @@ export const TweetPage = () => {
       <PageHeader>
         <h3 className="font-bold font-robotoSerif text-1.5xl">Home</h3>
       </PageHeader>
-      {isLoading ? (
+      {!tweet || isLoading ? (
         <Skeleton />
       ) : (
         <TweetCard
-          text={tweet?.text || ""}
-          image={tweet?.image || ""}
-          user={tweet?.user}
-          createdAt={tweet?.createdAt}
-          userLikesIds={tweet?.userLikesIds || []}
+          text={tweet.text}
+          image={tweet.image}
+          user={tweet.user}
+          createdAt={tweet.createdAt}
+          userLikesIds={tweet.userLikesIds}
         />
       )}
     </div>

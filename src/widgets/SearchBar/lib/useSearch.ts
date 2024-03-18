@@ -16,7 +16,7 @@ export const useSearch = <T>(
 
     const getData = setTimeout(() => {
       client
-        .collections<any>(collection)
+        .collections<T>(collection)
         .documents()
         .search({ q: searchValue.toLowerCase(), query_by: queryBy })
         .then((data) => {
