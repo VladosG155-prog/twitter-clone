@@ -11,6 +11,7 @@ export const TweetInput = () => {
   const user = useAppSelector(selectUser);
   const dispatch = useAppDispatch();
   const { isLoading, tweets } = useAppSelector((state) => state.tweets);
+  const [isSended, setIsSended] = useState(false);
 
   const [file, setFile] = useState<File | null>(null);
   const [text, setText] = useState("");
@@ -19,6 +20,7 @@ export const TweetInput = () => {
     dispatch(CREATE_TWEET({ user, text, image: file || undefined }));
     setText("");
     setFile(null);
+    setIsSended(true);
   };
 
   return (
@@ -27,7 +29,7 @@ export const TweetInput = () => {
         <Avatar url={user?.avatar} />
       </div>
       <div className="flex-1 relative">
-        {isLoading && tweets.length > 0 && (
+        {isLoading && tweets.length > 0 && isSended && (
           <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden relative">
             <div className="h-full bg-primary w-32 absolute animate-run"></div>
           </div>

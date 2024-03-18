@@ -18,10 +18,12 @@ export const RightSection = () => {
   };
 
   return (
-    <div>
+    <div className="md:p-10">
       <Icon name="twitter" width={50} height={41} className="text-primary" />
-      <h1 className="text-4xl font-roboto font-black">Happening now</h1>
-      <h2 className="text-3xl font-roboto font-black mb-5">
+      <h1 className="text-4xl md:text-2xl font-roboto font-black">
+        Happening now
+      </h1>
+      <h2 className="text-3xl md:text-1.75xl font-roboto font-black mb-5">
         Join Twitter today
       </h2>
       <div className="max-w-[400px] gap-3 flex flex-col">
