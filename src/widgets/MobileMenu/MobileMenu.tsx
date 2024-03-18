@@ -19,7 +19,7 @@ export const MobileMenu: FC<IMobileMenu> = ({
   };
 
   return (
-    <div className="fixed bottom-0 w-full flex border-t-gray-500 border-t-2 dark:bg-white bg-black p-8 pb-8 items-center z-40 justify-center gap-8 h-[30px]">
+    <div className="fixed bottom-0 w-full flex border-t-gray-500 border-t-2 dark:bg-white bg-black p-8 pb-8 items-center z-50 justify-center gap-8 h-[30px]">
       <Link to={ROUTES.HOME}>
         <Icon name="home" className="text-white dark:text-black" />
       </Link>
