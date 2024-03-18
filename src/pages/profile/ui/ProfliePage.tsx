@@ -42,8 +42,6 @@ export const ProfilePage = () => {
     dispatch(GET_TWEETS({ userId: activeUser.id }));
   }, [activeUser]);
 
-  console.log("@rerender");
-
   return (
     <div>
       <div className="border-x border-gray-400">

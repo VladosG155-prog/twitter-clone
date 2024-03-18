@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 
 import { selectUser } from "@/entities/session";
 import { CREATE_TWEET } from "@/entities/tweet/model/actions";
@@ -7,7 +7,9 @@ import { Button } from "@/shared/ui";
 import { AddPicture } from "@/shared/ui/";
 import { Avatar } from "@/shared/ui/Avatar/Avatar";
 
-export const TweetInput = () => {
+import { ITweetInputProps } from "./types";
+
+export const TweetInput: FC<ITweetInputProps> = ({ onClose }) => {
   const user = useAppSelector(selectUser);
   const dispatch = useAppDispatch();
   const { isLoading, tweets } = useAppSelector((state) => state.tweets);
@@ -21,6 +23,9 @@ export const TweetInput = () => {
     setText("");
     setFile(null);
     setIsSended(true);
+    if (onClose) {
+      onClose();
+    }
   };
 
   return (

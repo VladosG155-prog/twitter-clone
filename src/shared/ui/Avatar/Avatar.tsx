@@ -6,6 +6,8 @@ import defaultAvatar from "@/shared/assets/default.jpeg";
 import { IAvatarProps } from "./types";
 
 export const Avatar: FC<IAvatarProps> = memo(({ url, size = "xs" }) => {
+  console.log(url);
+
   return (
     <img
       src={url ?? defaultAvatar}
