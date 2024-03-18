@@ -16,11 +16,11 @@ export const useSearch = <T>(
 
     const getData = setTimeout(() => {
       client
-        .collections<T>(collection)
+        .collections(collection)
         .documents()
         .search({ q: searchValue.toLowerCase(), query_by: queryBy })
         .then((data) => {
-          const docsArray = data.hits?.map((hit) => hit.document);
+          const docsArray = data.hits?.map((hit) => hit.document as T);
           setValue(docsArray || []);
           setIsTyping(false);
         });
