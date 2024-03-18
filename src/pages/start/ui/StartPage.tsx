@@ -9,7 +9,7 @@ export const StartPage = () => {
       <div className="flex max-h-[90%] items-center">
         <img
           src={twitterImage}
-          className="max-w-[50%] object-contain mr-10"
+          className="max-w-[50%] object-contain mr-10 md:hidden"
           alt="twitter-image"
         />
         <RightSection />
