@@ -18,7 +18,7 @@ export const RightSection = () => {
   };
 
   return (
-    <div className="md:p-10">
+    <div className="md:p-10 md:flex md:flex-col md:flex-1">
       <Icon name="twitter" width={50} height={41} className="text-primary" />
       <h1 className="text-4xl md:text-2xl font-roboto font-black">
         Happening now

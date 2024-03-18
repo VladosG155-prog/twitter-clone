@@ -6,7 +6,7 @@ import { RightSection } from "./RightSection/RightSection";
 export const StartPage = () => {
   return (
     <div className="h-[100vh]">
-      <div className="flex max-h-[90%] items-center">
+      <div className="flex max-h-[90%] md:h-screen items-center">
         <img
           src={twitterImage}
           className="max-w-[50%] object-contain mr-10 md:hidden"
