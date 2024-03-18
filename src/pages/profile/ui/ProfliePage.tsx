@@ -3,14 +3,14 @@ import { useParams } from "react-router-dom";
 
 import { selectUser } from "@/entities/session";
 import { IUser } from "@/entities/session/types";
+import { TweetsList } from "@/entities/tweet/";
 import { GET_TWEETS } from "@/entities/tweet/model/actions";
 import { tweetSlice } from "@/entities/tweet/model/slice";
-import { TweetsList } from "@/entities/tweet/ui/TweetsList/TweetsList";
-import EditProfile from "@/features/profile/editProfile/ui/EditProfile/EditProfile";
-import { TweetInput } from "@/features/tweet/addTweet/ui/TweetInput";
+import { EditProfile } from "@/features/profile/editProfile";
+import { TweetInput } from "@/features/tweet/addTweet";
 import profileBg from "@/shared/assets/profile-bg.png";
 import { useAppDispatch, useAppSelector } from "@/shared/model/hooks";
-import { PageHeader } from "@/widgets/PageHeader/PageHeader";
+import { PageHeader } from "@/widgets/";
 
 import { getUserProfile } from "../api/getUserProfile";
 
@@ -26,15 +26,11 @@ export const ProfilePage = () => {
   const { profileId } = useParams();
 
   useEffect(() => {
-    console.log(2);
-
     if (!profileId && user) {
       setActiveUser(user);
       return;
     }
     getUserProfile(profileId!).then((user) => {
-      console.log(3);
-
       setActiveUser(user!);
     });
   }, [profileId]);

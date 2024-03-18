@@ -1,5 +1,5 @@
 import { useAppSelector } from "@/shared/model/hooks";
-import { Toast } from "@/shared/ui/Toast/Toast";
+import { Toast } from "@/shared/ui/";
 
 export const ToastContainer = () => {
   const toasts = useAppSelector((state) => state.app.toasts);

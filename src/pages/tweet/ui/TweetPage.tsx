@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { DocumentData } from "firebase/firestore";
 
-import { IUser } from "@/entities/session/types";
 import { ITweet } from "@/entities/tweet/types";
 import { TweetCard } from "@/entities/tweet/ui/TweetCard";
-import { db } from "@/shared/api/firebase/instance";
-import { Skeleton } from "@/shared/ui/Skeleton/Skeleton";
-import { PageHeader } from "@/widgets/PageHeader/PageHeader";
+import { Skeleton } from "@/shared/ui/";
+import { PageHeader } from "@/widgets/";
+
+import { fetchData } from "../api/fetchTweet";
 
 export const TweetPage = () => {
   const [tweet, setTweet] = useState<ITweet | undefined>();
@@ -17,18 +16,12 @@ export const TweetPage = () => {
   const { tweetId } = useParams();
 
   useEffect(() => {
+    if (!tweetId) return;
     setIsLoading(true);
-    db.collection("tweets")
-      .doc(tweetId)
-      .get()
-      .then((post) => {
-        const data = post.data();
-        data?.user.get().then((user: DocumentData) => {
-          const userData = user.data() as IUser;
-          setTweet({ ...(data as ITweet), user: userData });
-          setIsLoading(false);
-        });
-      });
+    fetchData(tweetId).then((d) => {
+      setTweet(d);
+      setIsLoading(false);
+    });
   }, [tweetId]);
 
   return (
@@ -42,8 +35,8 @@ export const TweetPage = () => {
         <TweetCard
           text={tweet?.text || ""}
           image={tweet?.image || ""}
-          user={tweet!.user}
-          createdAt={tweet!.createdAt}
+          user={tweet?.user}
+          createdAt={tweet?.createdAt}
           userLikesIds={tweet?.userLikesIds || []}
         />
       )}

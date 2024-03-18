@@ -4,7 +4,7 @@ import { Button, Modal } from "@/shared/ui";
 
 import { EditProfileModal } from "../EditProfileModal/EditProfileModal";
 
-const EditProfile = () => {
+export const EditProfile = () => {
   const [isShowEditModal, setIsShowEditModal] = useState(false);
 
   const handleClickButton = () => {
@@ -25,5 +25,3 @@ const EditProfile = () => {
     </div>
   );
 };
-
-export default EditProfile;

@@ -1,40 +1,25 @@
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import { Link } from "react-router-dom";
 
 import { ITweet } from "@/entities/tweet/types";
-import { client } from "@/shared/api/firebase/instance";
 import { Icon } from "@/shared/ui/Icon/Icon";
 
+import { useSearch } from "../../lib/useSearch";
 import { ISearchProps } from "../../types";
 
 export const TweetSearch: FC<ISearchProps> = ({ searchValue }) => {
-  const [posts, setPosts] = useState<ITweet[]>([]);
-  const [isTyping, setIsTyping] = useState(false);
-
-  useEffect(() => {
-    setIsTyping(true);
-    const getData = setTimeout(() => {
-      client
-        .collections("tweets")
-        .documents()
-        .search({ q: searchValue.toLowerCase(), query_by: "text" })
-        .then((posts) => {
-          const postsArray = posts.hits?.map((hit) => hit.document as ITweet);
-          setPosts(postsArray || []);
-          setIsTyping(false);
-        });
-    }, 500);
-    return () => {
-      clearTimeout(getData);
-    };
-  }, [searchValue]);
+  const { isTyping, value: tweets } = useSearch<ITweet>(
+    searchValue,
+    "tweets",
+    "text"
+  );
 
   return (
     <div>
-      {posts.map((post) => (
-        <Link to={"tweets/" + post.id}>
+      {tweets.map(({ text, id }) => (
+        <Link key={id} to={"tweets/" + id}>
           <div className="hover:bg-primary p-5 cursor-pointer">
-            <h4>{post.text}</h4>
+            <h4>{text}</h4>
           </div>
         </Link>
       ))}
@@ -46,7 +31,7 @@ export const TweetSearch: FC<ISearchProps> = ({ searchValue }) => {
           </i>
         </h5>
       )}
-      {searchValue.length > 0 && posts.length === 0 && !isTyping && (
+      {searchValue.length > 0 && tweets.length === 0 && !isTyping && (
         <h3 className="p-5">No results found</h3>
       )}
     </div>

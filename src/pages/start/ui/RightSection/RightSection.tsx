@@ -4,7 +4,7 @@ import { LOGINGOOGLE } from "@/entities/session/model/actions";
 import { ROUTES } from "@/shared/const/routes";
 import { useAppDispatch } from "@/shared/model/hooks";
 import { Button } from "@/shared/ui/";
-import { Icon } from "@/shared/ui/Icon/Icon";
+import { Icon } from "@/shared/ui/";
 
 export const RightSection = () => {
   const navigate = useNavigate();

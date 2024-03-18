@@ -1,46 +1,32 @@
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import { Link } from "react-router-dom";
 
 import { IUser } from "@/entities/session/types";
 import { UserCard } from "@/entities/user/ui/UserCard/UserCard";
-import { client } from "@/shared/api/firebase/instance";
 import { ROUTES } from "@/shared/const/routes";
-import { Icon } from "@/shared/ui/Icon/Icon";
+import { Icon } from "@/shared/ui/";
 
+import { useSearch } from "../../lib/useSearch";
 import { ISearchProps } from "../../types";
 
 export const UserSearch: FC<ISearchProps> = ({ searchValue }) => {
-  const [users, setUsers] = useState<IUser[]>([]);
-  const [isTyping, setIsTyping] = useState(false);
-  useEffect(() => {
-    setIsTyping(true);
+  const { isTyping, value: users } = useSearch<IUser>(
+    searchValue,
+    "users",
+    "profileId, name"
+  );
 
-    const getData = setTimeout(() => {
-      client
-        .collections<IUser>("users")
-        .documents()
-        .search({ q: searchValue.toLowerCase(), query_by: "profileId, name" })
-        .then((user) => {
-          const usersArray = user.hits?.map((hit) => hit.document);
-          setUsers(usersArray || []);
-          setIsTyping(false);
-        });
-    }, 500);
-
-    return () => {
-      clearTimeout(getData);
-    };
-  }, [searchValue]);
+  if (!users.length) return null;
 
   return (
     <div>
-      {users.map((user) => (
-        <Link to={ROUTES.PROFILE + "/" + user.profileId}>
+      {users.map(({ name, avatar, profileId, id }) => (
+        <Link key={id} to={ROUTES.PROFILE + "/" + profileId}>
           <div className="hover:bg-primary p-5 cursor-pointer">
             <UserCard
-              name={user.name}
-              avatar={user.avatar || ""}
-              userId={user.profileId}
+              name={name}
+              avatar={avatar || ""}
+              userId={profileId}
               isSmallCard
               isShowFollowBtn={false}
             />

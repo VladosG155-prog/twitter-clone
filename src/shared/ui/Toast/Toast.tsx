@@ -10,8 +10,6 @@ export const Toast: FC<IToastProps> = ({ text, type, id }) => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    console.log("@mount");
-
     const timeout = setTimeout(() => {
       dispatch(appSlice.actions.removeToast(id));
     }, 2000);
