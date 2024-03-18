@@ -29,6 +29,7 @@ export const useSearch = <T>(
     return () => {
       clearTimeout(getData);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchValue]);
 
   return { isTyping, value };

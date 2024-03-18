@@ -11,6 +11,7 @@ export const HomePage = () => {
 
   useEffect(() => {
     dispatch(GET_TWEETS({}));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

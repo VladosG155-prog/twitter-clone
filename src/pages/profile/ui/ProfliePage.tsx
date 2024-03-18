@@ -33,6 +33,7 @@ export const ProfilePage = () => {
     getUserProfile(profileId!).then((user) => {
       setActiveUser(user!);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profileId]);
 
   useEffect(() => {
@@ -40,6 +41,7 @@ export const ProfilePage = () => {
 
     dispatch(tweetSlice.actions.saveTweets([]));
     dispatch(GET_TWEETS({ userId: activeUser.id }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeUser]);
 
   return (

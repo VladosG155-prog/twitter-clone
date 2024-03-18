@@ -15,6 +15,7 @@ export const Toast: FC<IToastProps> = ({ text, type, id }) => {
     }, 2000);
 
     return () => clearTimeout(timeout);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
