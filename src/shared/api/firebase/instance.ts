@@ -1,6 +1,5 @@
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import firebase from "firebase/compat/app";
-import { enableIndexedDbPersistence } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 import Typesense from "typesense";
 
