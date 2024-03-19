@@ -17,7 +17,7 @@ describe("registration spec", () => {
         origin: "http://localhost:5173",
       },
     });
-    cy.get('input[name="email"]').type("test@gmail.com");
+    cy.get('input[name="email"]').type("test123123@gmail.com");
     cy.get('input[name="password"]').type("2312247");
     cy.get('input[name="tel"]').type("+375297684465");
     cy.get('input[name="name"]').type("Васик");
