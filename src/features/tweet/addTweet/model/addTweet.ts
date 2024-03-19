@@ -10,7 +10,6 @@ import { postTweet } from "../api/postTweet";
 export function* addTweet(data: PayloadAction<ICreateTweetRequest>): Generator {
   try {
     yield put(tweetSlice.actions.setLoading(true));
-
     yield call(postTweet, data.payload);
     yield put(GET_TWEETS({ userId: data.payload.user.id }));
   } catch (error) {
