@@ -2,7 +2,6 @@ describe("authorization logic", () => {
   beforeEach(() => {
     indexedDB.deleteDatabase("firebaseLocalStorageDb");
   });
-
   it("invalid credentials", () => {
     cy.visit("/auth");
     cy.get('input[name="email"]').type("test11111@gmail.com");

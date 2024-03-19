@@ -23,7 +23,7 @@ export const LoginForm: FC<ILoginFormProps> = ({ onSubmit }) => {
   };
 
   return (
-    <form className="w-full">
+    <div className="w-full">
       <Controller
         name="email"
         control={control}
@@ -51,12 +51,15 @@ export const LoginForm: FC<ILoginFormProps> = ({ onSubmit }) => {
       />
 
       <Button
-        onClick={handleSubmit(handleSubmitForm)}
+        onClick={(e) => {
+          e.preventDefault();
+          handleSubmit(handleSubmitForm)();
+        }}
         type="submit"
         text="Next"
         role="submit"
         className="mt-3"
       />
-    </form>
+    </div>
   );
 };
