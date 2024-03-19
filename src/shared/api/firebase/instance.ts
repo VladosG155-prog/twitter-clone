@@ -1,5 +1,6 @@
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import firebase from "firebase/compat/app";
+import { enableIndexedDbPersistence } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 import Typesense from "typesense";
 
@@ -19,6 +20,8 @@ export const auth = getAuth(app);
 export const provider = new GoogleAuthProvider();
 export const db = firebase.firestore(app);
 export const storage = getStorage(app);
+
+enableIndexedDbPersistence(db);
 
 export const client = new Typesense.Client({
   nodes: [

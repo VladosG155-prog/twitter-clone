@@ -20,7 +20,7 @@ export const postTweet = async (data: ICreateTweetRequest) => {
 
     const doc = await db.collection("tweets").doc(id).get();
     const responsedData = doc.data()!;
-    await client
+    client
       .collections("tweets")
       .documents()
       .create({

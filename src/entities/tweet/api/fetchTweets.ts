@@ -10,9 +10,15 @@ export const fetchTweets = async (userId?: string) => {
 
     const currentTweets = db.collection("tweets").orderBy("createdAt", "desc");
 
-    const userTweets = await currentTweets
+    let userTweets = await currentTweets
       .where("user", "==", findedUser)
-      .get();
+      .get({ source: "cache" });
+
+    if (userTweets.empty) {
+      console.log("noCache");
+
+      userTweets = await currentTweets.where("user", "==", findedUser).get();
+    }
 
     const allTweets = await currentTweets.get();
 
