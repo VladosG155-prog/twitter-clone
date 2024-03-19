@@ -18,6 +18,7 @@ export const postTweet = async (data: ICreateTweetRequest) => {
     });
 
     const typesenseDoc = {
+      id: id,
       text: data.text.toLowerCase(),
       image: imageUrl ?? "",
     };
