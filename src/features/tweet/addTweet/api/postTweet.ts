@@ -1,3 +1,4 @@
+import { doc, setDoc } from "firebase/firestore";
 import { v4 } from "uuid";
 
 import { ICreateTweetRequest } from "@/entities/tweet/types";
@@ -7,26 +8,21 @@ export const postTweet = async (data: ICreateTweetRequest) => {
   try {
     const imageUrl = await uploadFile(data.image);
     const id = v4();
-    await db
-      .collection("tweets")
-      .doc(id)
-      .set({
-        ...data,
-        id,
-        user: db.doc("users/" + data.user.id),
-        image: imageUrl ?? "",
-        createdAt: new Date(Date.now()),
-      });
 
-    const doc = await db.collection("tweets").doc(id).get();
-    const responsedData = doc.data()!;
-    client
-      .collections("tweets")
-      .documents()
-      .create({
-        ...responsedData,
-        text: responsedData.text.toLocaleLowerCase(),
-      });
+    await setDoc(doc(db, "tweets", id), {
+      ...data,
+      id,
+      user: db.doc("users/" + data.user.id),
+      image: imageUrl ?? "",
+      createdAt: new Date(Date.now()),
+    });
+
+    const typesenseDoc = {
+      text: data.text.toLowerCase(),
+      image: imageUrl ?? "",
+    };
+
+    client.collections("tweets").documents().create(typesenseDoc);
   } catch (error) {
     console.error(error);
   }
