@@ -4,7 +4,7 @@ import { IUser } from "@/entities/session/types";
 import { ITweet } from "@/entities/tweet/types";
 import { db } from "@/shared/api/firebase/instance";
 
-export const fetchData = async (tweetId: string) => {
+export const fetchTweet = async (tweetId: string) => {
   const postSnapshot = await db.collection("tweets").doc(tweetId).get();
   const postData = postSnapshot.data();
   if (postData) {

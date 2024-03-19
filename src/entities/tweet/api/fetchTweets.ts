@@ -15,15 +15,16 @@ export const fetchTweets = async (userId?: string) => {
       .get({ source: "cache" });
 
     if (userTweets.empty) {
-      console.log("noCache");
-
       userTweets = await currentTweets.where("user", "==", findedUser).get();
     }
 
-    const allTweets = await currentTweets.get();
+    let allTweets = await currentTweets.get({ source: "cache" });
+
+    if (allTweets.empty) {
+      allTweets = await currentTweets.get();
+    }
 
     const docs = userId ? userTweets : allTweets;
-
     const promiseArr = docs.docs.map(async (doc): Promise<ITweet> => {
       const { text, user, createdAt, userLikesIds, image, id } = doc.data();
 
