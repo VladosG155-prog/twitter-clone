@@ -2,6 +2,9 @@ describe("theme toggle spec", () => {
   beforeEach(() => {
     indexedDB.deleteDatabase("firebaseLocalStorageDb");
   });
+  beforeEach(() => {
+    indexedDB.deleteDatabase("firebaseLocalStorageDb");
+  });
 
   it("theme is gonna change", () => {
     cy.visit("/auth");

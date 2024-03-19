@@ -50,7 +50,7 @@ export const RegistrationForm: FC<IRegistrationFormProps> = ({ onSubmit }) => {
   const isSubmitDisabled = Object.keys(errors).length > 0;
 
   return (
-    <form className="w-full">
+    <div className="w-full">
       {userFields.map(({ fieldName, placeholder, type }) => (
         <Controller
           name={fieldName}
@@ -99,13 +99,15 @@ export const RegistrationForm: FC<IRegistrationFormProps> = ({ onSubmit }) => {
         ))}
       </div>
       <Button
-        onClick={handleSubmit(handleSumbitForm)}
+        onClick={(e) => {
+          e.preventDefault();
+          handleSubmit(handleSumbitForm)();
+        }}
         disabled={isSubmitDisabled}
-        type="submit"
         role="submit"
         text="Next"
         className="mt-3"
       />
-    </form>
+    </div>
   );
 };

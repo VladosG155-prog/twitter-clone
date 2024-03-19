@@ -6,7 +6,7 @@ import { TweetCard } from "@/entities/tweet/ui/TweetCard";
 import { Skeleton } from "@/shared/ui/";
 import { PageHeader } from "@/widgets/";
 
-import { fetchData } from "../api/fetchTweet";
+import { fetchTweet } from "../api/fetchTweet";
 
 export const TweetPage = () => {
   const [tweet, setTweet] = useState<ITweet | undefined>();
@@ -18,7 +18,7 @@ export const TweetPage = () => {
   useEffect(() => {
     if (!tweetId) return;
     setIsLoading(true);
-    fetchData(tweetId).then((d) => {
+    fetchTweet(tweetId).then((d) => {
       setTweet(d);
       setIsLoading(false);
     });
