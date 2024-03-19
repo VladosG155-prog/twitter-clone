@@ -16,3 +16,7 @@ declare namespace Cypress {
     login(name: string): void;
   }
 }
+
+interface Window {
+  Cypress?: unknown;
+}

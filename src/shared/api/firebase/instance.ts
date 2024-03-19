@@ -26,14 +26,14 @@ firebase.firestore().settings({
   experimentalForceLongPolling: true,
 });
 export const db = firebase.firestore(app);
-db.settings({
-  merge: true,
-  experimentalForceLongPolling: true,
-});
+
 export const storage = getStorage(app);
 
-if (location.hostname === "localhost") {
-  console.log("@localhost");
+if (window.Cypress) {
+  db.settings({
+    merge: true,
+    experimentalForceLongPolling: true,
+  });
   connectAuthEmulator(auth, "http://127.0.0.1:9099", { disableWarnings: true });
   db.useEmulator("127.0.0.1", 8080);
 }
