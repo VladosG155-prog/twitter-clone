@@ -7,15 +7,15 @@ import { ITweetCardProps } from "./types";
 export const TweetCard: FC<ITweetCardProps> = (props) => {
   const { user, createdAt, text, image } = props;
 
-  const dateCreatedAt = createdAt?.toLocaleDateString();
+  const dateCreatedAt = createdAt.toLocaleDateString();
 
   return (
     <div className="flex">
-      <Avatar size="xs" url={user?.avatar} />
+      <Avatar size="xs" url={user.avatar} />
       <div className="ml-2">
         <div className="gap-3 flex">
-          <span>{user?.name}</span>
-          <span>{user?.profileId}</span>
+          <span>{user.name}</span>
+          <span>{user.profileId}</span>
           <span> {dateCreatedAt}</span>
         </div>
         <p className="mb-5">{text}</p>
