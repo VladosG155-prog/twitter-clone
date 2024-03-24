@@ -1,13 +1,13 @@
 import { PayloadAction } from "@reduxjs/toolkit";
 import { call, put, takeEvery } from "redux-saga/effects";
 
-import { appSlice } from "@/entities/app/model/slice";
-import { sessionSlice } from "@/entities/session";
 import {
   ISLOGGEDIN,
   LOGINGOOGLE,
   REGISTRATION,
-} from "@/entities/session/model/actions";
+  sessionSlice,
+} from "@/entities/session/";
+import { globalSlice } from "@/shared/lib/globalSlice";
 
 import { createUser } from "../../api/createUser";
 import { googleAuth } from "../../api/googleAuth";
@@ -20,7 +20,7 @@ export function* registration(
     yield put(sessionSlice.actions.userLoading(true));
     yield call(createUser, data.payload);
     yield put(
-      appSlice.actions.addToast({
+      globalSlice.actions.addToast({
         text: "successfuly registration",
         type: "success",
       })
@@ -28,7 +28,7 @@ export function* registration(
   } catch (error) {
     if (error instanceof Error) {
       yield put(
-        appSlice.actions.addToast({ text: error.message, type: "error" })
+        globalSlice.actions.addToast({ text: error.message, type: "error" })
       );
     }
 

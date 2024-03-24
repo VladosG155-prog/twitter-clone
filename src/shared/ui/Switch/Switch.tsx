@@ -3,6 +3,7 @@ import { FC } from "react";
 import { ISwitchProps } from "./types";
 
 export const Switch: FC<ISwitchProps> = ({ onChange, checked }) => {
+  const handleClickInput = () => null;
   return (
     <label
       data-testid="switch"
@@ -11,7 +12,7 @@ export const Switch: FC<ISwitchProps> = ({ onChange, checked }) => {
       <input
         onClick={onChange}
         type="checkbox"
-        onChange={() => null}
+        onChange={handleClickInput}
         checked={checked}
         className="sr-only peer"
       />

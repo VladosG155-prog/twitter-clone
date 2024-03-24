@@ -2,12 +2,11 @@ import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import { RouterProvider } from "react-router-dom";
 
-import { ISLOGGEDIN } from "@/entities/session/model/actions";
+import { appRouter } from "@/app/appRouter";
+import { store } from "@/app/store";
+import { ISLOGGEDIN } from "@/entities/session/";
 
-import { appRouter } from "./appRouter";
-import { store } from "./store";
-
-import "./styles/global.css";
+import "@/app/styles/global.css";
 
 store.dispatch(ISLOGGEDIN());
 

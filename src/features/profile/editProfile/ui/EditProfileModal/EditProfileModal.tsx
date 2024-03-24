@@ -2,11 +2,11 @@ import { FC, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { selectUser } from "@/entities/session";
-import { UPDATE_PROFILE } from "@/features/profile/model/actions";
+import { selectUser } from "@/entities/session/model";
+import { UPDATE_PROFILE } from "@/features/profile/editProfile/model/actions";
 import { useAppDispatch, useAppSelector } from "@/shared/model/hooks";
 import { Avatar, Button, ImageWithUpload, Input } from "@/shared/ui";
-import { Icon } from "@/shared/ui/Icon/Icon";
+import { Icon } from "@/shared/ui/";
 
 import { userFields } from "../../config";
 import { EditProfileScheme } from "../../model/EditProfileScheme";

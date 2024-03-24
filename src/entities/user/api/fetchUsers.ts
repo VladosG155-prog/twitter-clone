@@ -1,5 +1,5 @@
 import { IUser } from "@/entities/session/types";
-import { db } from "@/shared/api/firebase/instance";
+import { db } from "@/shared/api/firebase";
 
 export const fetchUsers = async (userId: string) => {
   try {

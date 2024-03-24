@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 
-import { LOGIN } from "@/entities/session/model/actions";
-import { IAuthFormData } from "@/features/authentication/login/types";
-import { LoginForm } from "@/features/authentication/login/ui/LoginForm";
+import { LOGIN } from "@/entities/session/";
+import { IAuthFormData } from "@/features/authentication/";
+import { LoginForm } from "@/features/authentication/";
 import { ROUTES } from "@/shared/const/routes";
 import { useAppDispatch } from "@/shared/model/hooks";
-import { Icon } from "@/shared/ui/Icon/Icon";
+import { Icon } from "@/shared/ui/";
 
 export const LoginPage = () => {
   const dispatch = useAppDispatch();

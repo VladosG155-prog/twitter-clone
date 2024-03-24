@@ -1,4 +1,4 @@
-import twitterImage from "@/shared/assets/OnBoardImage.png";
+import twitterImage from "@/shared/assets/images/OnBoardImage.png";
 
 import { Footer } from "./Footer/Footer";
 import { RightSection } from "./RightSection/RightSection";

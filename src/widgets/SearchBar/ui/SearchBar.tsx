@@ -1,17 +1,15 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-import { appSlice } from "@/entities/app/model/slice";
-import { selectUser } from "@/entities/session";
-import { IUser } from "@/entities/session/types";
-import { fetchUsers } from "@/entities/user/api/fetchUsers";
-import { UserCard } from "@/entities/user/ui/UserCard/UserCard";
+import { IUser, selectUser } from "@/entities/session/";
+import { fetchUsers, UserCard } from "@/entities/user/";
 import { ROUTES } from "@/shared/const/routes";
+import { globalSlice } from "@/shared/lib/globalSlice";
 import { useAppDispatch, useAppSelector } from "@/shared/model/hooks";
-import { Search } from "@/shared/ui/Search/Search";
+import { Search } from "@/shared/ui/";
 
-import { TweetSearch } from "./TweetSearch/TweetSearch";
-import { UserSearch } from "./UserSearch/UserSearch";
+import { TweetSearch } from "./TweetSearch";
+import { UserSearch } from "./UserSearch";
 
 export const SearchBar = () => {
   const [users, setUsers] = useState<IUser[]>([]);
@@ -24,13 +22,13 @@ export const SearchBar = () => {
 
   useEffect(() => {
     if (!user?.profileId) return;
-    dispatch(appSlice.actions.setLoader(true));
+    dispatch(globalSlice.actions.setLoader(true));
     fetchUsers(user?.profileId)
       .then((users) => {
         setUsers(users || []);
       })
       .finally(() => {
-        dispatch(appSlice.actions.setLoader(false));
+        dispatch(globalSlice.actions.setLoader(false));
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user?.profileId]);

@@ -1,4 +1,4 @@
-import { auth, db } from "@/shared/api/firebase/instance";
+import { auth, db } from "@/shared/api/firebase";
 
 import { IUser } from "../types";
 

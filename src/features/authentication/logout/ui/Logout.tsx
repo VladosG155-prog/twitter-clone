@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
-import { selectUser } from "@/entities/session";
-import { LOGOUT } from "@/entities/session/model/actions";
-import { UserCard } from "@/entities/user/ui/UserCard/UserCard";
+import { selectUser } from "@/entities/session/";
+import { LOGOUT } from "@/entities/session/";
+import { UserCard } from "@/entities/user/";
 import { ROUTES } from "@/shared/const/routes";
 import { useAppDispatch, useAppSelector } from "@/shared/model/hooks";
 import { Button } from "@/shared/ui";

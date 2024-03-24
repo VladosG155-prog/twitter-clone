@@ -1,20 +1,17 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import { selectUser } from "@/entities/session";
-import { IUser } from "@/entities/session/types";
-import { TweetsList } from "@/entities/tweet/";
-import { GET_TWEETS } from "@/entities/tweet/model/actions";
-import { tweetSlice } from "@/entities/tweet/model/slice";
-import { EditProfile } from "@/features/profile/editProfile";
-import { TweetInput } from "@/features/tweet/addTweet";
-import profileBg from "@/shared/assets/profile-bg.png";
+import { IUser, selectUser } from "@/entities/session/";
+import { GET_TWEETS, tweetSlice, TweetsList } from "@/entities/tweet/";
+import { EditProfile } from "@/features/profile";
+import { TweetInput } from "@/features/tweet/";
+import profileBg from "@/shared/assets/images/profile-bg.png";
 import { useAppDispatch, useAppSelector } from "@/shared/model/hooks";
 import { PageHeader } from "@/widgets/";
 
 import { getUserProfile } from "../api/getUserProfile";
 
-import { ProfileInfo } from "./ProfileInfo/ProfileInfo";
+import { ProfileInfo } from "./ProfileInfo";
 
 export const ProfilePage = () => {
   const user = useAppSelector(selectUser);
@@ -49,7 +46,7 @@ export const ProfilePage = () => {
       <div className="border-x border-gray-400">
         <PageHeader>
           <h5 className="font-bold font-robotoSerif text-1.5xl">
-            {activeUser?.name}
+            {activeUser.name}
             <p className="text-base text-gray-400 font-normal">
               {tweets.length} tweets
             </p>
@@ -58,14 +55,16 @@ export const ProfilePage = () => {
         <img src={profileBg} />
         <div className="flex items-start border-gray-400 border-b justify-between pr-5 pt-5">
           <ProfileInfo
-            profileId={activeUser?.profileId}
-            name={activeUser?.name}
+            profileId={activeUser.profileId}
+            name={activeUser.name}
             description={activeUser.bio}
-            avatarUrl={activeUser?.avatar}
+            avatarUrl={activeUser.avatar}
           />
-          {activeUser?.id === user.id && <EditProfile />}
+          {activeUser.id === user.id && <EditProfile />}
         </div>
-        {activeUser?.id === user.id && <TweetInput />}
+      </div>
+      <div className="border-gray-400 border-x">
+        {activeUser.id === user.id && <TweetInput />}
       </div>
       <TweetsList />
     </div>

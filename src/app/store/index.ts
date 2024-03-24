@@ -1,9 +1,9 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
 
-import { appSlice } from "@/entities/app/model/slice";
-import { sessionSlice } from "@/entities/session";
+import { sessionSlice } from "@/entities/session/model";
 import { tweetSlice } from "@/entities/tweet/model/slice";
+import { globalSlice } from "@/shared/lib/globalSlice";
 
 import rootSaga from "./rootSaga";
 
@@ -12,7 +12,7 @@ const sagaMiddleWare = createSagaMiddleware();
 const rootReducer = combineReducers({
   session: sessionSlice.reducer,
   tweets: tweetSlice.reducer,
-  app: appSlice.reducer,
+  app: globalSlice.reducer,
 });
 
 export const store = configureStore({

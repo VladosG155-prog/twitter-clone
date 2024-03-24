@@ -1,7 +1,7 @@
 import { updatePassword } from "firebase/auth";
 
 import { IUser } from "@/entities/session/types";
-import { auth, db } from "@/shared/api/firebase/instance";
+import { auth, db } from "@/shared/api/firebase";
 import { uploadFile } from "@/shared/api/storage/uploadFile";
 
 export const editProfileRequest = async (

@@ -1,6 +1,6 @@
 import { Timestamp } from "firebase/firestore";
 
-import { db } from "@/shared/api/firebase/instance";
+import { db } from "@/shared/api/firebase";
 
 import { ITweet } from "../types";
 

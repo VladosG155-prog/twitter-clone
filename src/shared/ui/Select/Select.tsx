@@ -21,6 +21,8 @@ export const Select: FC<ISelectProps> = (props) => {
     setIsOpenOptions((prev) => !prev);
   };
 
+  const handleClickInput = () => null;
+
   const active = options.find((option) => option.value === value);
 
   useOnClickOutside(selectRef, () => setIsOpenOptions(false));
@@ -38,7 +40,7 @@ export const Select: FC<ISelectProps> = (props) => {
         type="text"
         className="text-xl cursor-pointer caret-transparent bg-transparent h-full w-full rounded-sm outline-none"
         value={active?.label || value}
-        onChange={() => null}
+        onChange={handleClickInput}
         placeholder={placeholder}
       />
       <i className="absolute right-2 top-[50%] ">

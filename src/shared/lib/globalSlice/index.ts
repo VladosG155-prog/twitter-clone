@@ -14,8 +14,8 @@ const initialState: IState = {
   showLoader: false,
   toasts: [],
 };
-export const appSlice = createSlice({
-  name: "app",
+export const globalSlice = createSlice({
+  name: "global",
   initialState,
   reducers: {
     setLoader: (state, action) => {

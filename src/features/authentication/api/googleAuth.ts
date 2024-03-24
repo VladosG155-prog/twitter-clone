@@ -1,7 +1,7 @@
 import { signInWithPopup } from "firebase/auth";
 import { addDoc, collection, updateDoc } from "firebase/firestore";
 
-import { auth, client, db, provider } from "@/shared/api/firebase/instance";
+import { auth, client, db, provider } from "@/shared/api/firebase";
 import { generateSlug } from "@/shared/lib/generateRandomProfileId/randomProfileId";
 
 export const googleAuth = async () => {

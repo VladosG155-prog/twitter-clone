@@ -1,7 +1,7 @@
 import { FC, memo } from "react";
 
-import { TweetCard } from "@/entities/tweet/ui/TweetCard";
-import { LikeTweetButton } from "@/features/tweet/likeTweet/ui/LikeTweetButton";
+import { TweetCard } from "@/entities/tweet/";
+import { LikeTweetButton } from "@/features/tweet/";
 import { useAppSelector } from "@/shared/model/hooks";
 
 import { ILikeTweetCardProps } from "./types";
