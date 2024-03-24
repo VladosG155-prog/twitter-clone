@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-import { Icon } from "../Icon/Icon";
+import { Icon } from "@/shared/ui";
 
 import { IAddPictureProps } from "./types";
 

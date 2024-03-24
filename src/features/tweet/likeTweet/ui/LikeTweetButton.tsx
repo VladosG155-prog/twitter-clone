@@ -5,7 +5,7 @@ import { LIKE_TWEET } from "@/entities/tweet/model/actions";
 import { useAppDispatch } from "@/shared/model/hooks";
 import { Icon } from "@/shared/ui/";
 
-import { ILikeTweetButtonProps } from "./interfaces";
+import { ILikeTweetButtonProps } from "./types";
 
 export const LikeTweetButton: FC<ILikeTweetButtonProps> = ({
   userId,
@@ -21,6 +21,8 @@ export const LikeTweetButton: FC<ILikeTweetButtonProps> = ({
 
   const id = useId();
 
+  const handleClickInput = () => null;
+
   return (
     <button
       onClick={(e) => {
@@ -31,7 +33,7 @@ export const LikeTweetButton: FC<ILikeTweetButtonProps> = ({
     >
       <input
         type="checkbox"
-        onChange={() => null}
+        onChange={handleClickInput}
         checked={isLikedByUser}
         id={id}
       />

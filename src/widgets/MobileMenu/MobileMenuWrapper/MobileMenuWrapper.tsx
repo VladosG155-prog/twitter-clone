@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
-import { TweetInput } from "@/features/tweet/addTweet/ui/TweetInput";
+import { TweetInput } from "@/features/tweet/";
 import { Modal } from "@/shared/ui";
-import { Drawer } from "@/shared/ui/Drawer/Drawer";
-import { SearchBar } from "@/widgets/SearchBar/ui/SearchBar";
-import { SideBar } from "@/widgets/Sidebar/ui/SideBar/SideBar";
+import { Drawer } from "@/shared/ui/";
+import { SearchBar } from "@/widgets/";
+import { SideBar } from "@/widgets/";
 
 import { MobileMenu } from "../MobileMenu";
 
@@ -20,27 +20,37 @@ export const MobileMenuWrapper = () => {
     setIsSideBarOpen(false);
   }, [location]);
 
+  const handleClickAddTweet = () => {
+    setIsShowAddTweet((prev) => !prev);
+  };
+  const handleClickSearch = () => {
+    setIsSearchOpen((prev) => !prev);
+  };
+  const handleClickMenu = () => {
+    setIsSideBarOpen((prev) => !prev);
+  };
+
   return (
     <>
-      <Modal isOpen={isShowAddTweet} onClose={() => setIsShowAddTweet(false)}>
+      <Modal isOpen={isShowAddTweet} onClose={handleClickAddTweet}>
         <TweetInput />
       </Modal>
 
       {isSearchOpen && (
-        <Drawer onClose={() => setIsSearchOpen(false)} title="Search">
+        <Drawer onClose={handleClickSearch} title="Search">
           <SearchBar />
         </Drawer>
       )}
       {isSideBarOpen && (
-        <Drawer onClose={() => setIsSideBarOpen(false)} title="Menu">
+        <Drawer onClose={handleClickMenu} title="Menu">
           <SideBar />
         </Drawer>
       )}
 
       <MobileMenu
-        handleClickAddTweet={() => setIsShowAddTweet(true)}
-        handleClickMenu={() => setIsSideBarOpen(true)}
-        handleClickSearch={() => setIsSearchOpen(true)}
+        handleClickAddTweet={handleClickAddTweet}
+        handleClickMenu={handleClickMenu}
+        handleClickSearch={handleClickSearch}
       />
     </>
   );

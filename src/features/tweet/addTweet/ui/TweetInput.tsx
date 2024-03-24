@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 
-import { selectUser } from "@/entities/session";
+import { selectUser } from "@/entities/session/model";
 import { CREATE_TWEET } from "@/entities/tweet/model/actions";
 import { useAppDispatch, useAppSelector } from "@/shared/model/hooks";
 import { Button } from "@/shared/ui";

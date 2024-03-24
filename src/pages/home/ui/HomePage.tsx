@@ -1,10 +1,9 @@
 import { useEffect } from "react";
 
-import { GET_TWEETS } from "@/entities/tweet/model/actions";
-import { TweetsList } from "@/entities/tweet/ui/TweetsList/TweetsList";
-import { TweetInput } from "@/features/tweet/addTweet/ui/TweetInput";
+import { GET_TWEETS, TweetsList } from "@/entities/tweet/";
+import { TweetInput } from "@/features/tweet/";
 import { useAppDispatch } from "@/shared/model/hooks";
-import { PageHeader } from "@/widgets/PageHeader/PageHeader";
+import { PageHeader } from "@/widgets/";
 
 export const HomePage = () => {
   const dispatch = useAppDispatch();

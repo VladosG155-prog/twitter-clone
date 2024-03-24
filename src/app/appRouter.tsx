@@ -1,16 +1,19 @@
+import { Suspense } from "react";
 import { createBrowserRouter, Outlet } from "react-router-dom";
 
-import { HomePage } from "@/pages/home/ui/HomePage";
-import { LoginPage } from "@/pages/login/ui/LoginPage";
-import { ProfilePage } from "@/pages/profile/ui/ProfliePage";
-import { RegistrationPage } from "@/pages/registration";
-import { StartPage } from "@/pages/start";
-import { TweetPage } from "@/pages/tweet/ui/TweetPage";
 import { ROUTES } from "@/shared/const/routes";
 
 import { BaseLayout } from "./layouts/baseLayout";
 import { ToastContainer } from "./providers/ToastContainer/ToastContainer";
 import { AuthGuard, GuestGuard } from "./guards";
+import {
+  HomePage,
+  LoginPage,
+  ProfilePage,
+  RegistrationPage,
+  StartPage,
+  TweetPage,
+} from "./lazyPages";
 
 export const appRouter = createBrowserRouter([
   {
@@ -27,7 +30,9 @@ export const appRouter = createBrowserRouter([
         index: true,
         element: (
           <AuthGuard>
-            <StartPage />
+            <Suspense>
+              <StartPage />
+            </Suspense>
           </AuthGuard>
         ),
       },
@@ -35,7 +40,9 @@ export const appRouter = createBrowserRouter([
         path: ROUTES.REGISTRATION,
         element: (
           <AuthGuard>
-            <RegistrationPage />
+            <Suspense>
+              <RegistrationPage />
+            </Suspense>
           </AuthGuard>
         ),
       },
@@ -43,7 +50,9 @@ export const appRouter = createBrowserRouter([
         path: ROUTES.AUTH,
         element: (
           <AuthGuard>
-            <LoginPage />
+            <Suspense>
+              <LoginPage />
+            </Suspense>
           </AuthGuard>
         ),
       },
@@ -57,23 +66,29 @@ export const appRouter = createBrowserRouter([
 
             element: (
               <GuestGuard>
-                <ProfilePage />
+                <Suspense>
+                  <ProfilePage />
+                </Suspense>
               </GuestGuard>
             ),
           },
           {
-            path: ROUTES.PROFILE + "/:profileId",
+            path: ROUTES.PROFILE_DETAIL,
             element: (
               <GuestGuard>
-                <ProfilePage />
+                <Suspense>
+                  <ProfilePage />
+                </Suspense>
               </GuestGuard>
             ),
           },
           {
-            path: ROUTES.TWEETS + "/:tweetId",
+            path: ROUTES.TWEETS_DETAIL,
             element: (
               <GuestGuard>
-                <TweetPage />
+                <Suspense>
+                  <TweetPage />
+                </Suspense>
               </GuestGuard>
             ),
           },
@@ -81,7 +96,9 @@ export const appRouter = createBrowserRouter([
             path: ROUTES.HOME,
             element: (
               <GuestGuard>
-                <HomePage />
+                <Suspense>
+                  <HomePage />
+                </Suspense>
               </GuestGuard>
             ),
           },

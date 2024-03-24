@@ -1,7 +1,7 @@
 import { FC, memo } from "react";
 import cn from "classnames";
 
-import defaultAvatar from "@/shared/assets/default.jpeg";
+import defaultAvatar from "@/shared/assets/images/default.jpeg";
 
 import { IAvatarProps } from "./types";
 

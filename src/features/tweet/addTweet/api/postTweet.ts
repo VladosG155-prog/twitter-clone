@@ -2,7 +2,7 @@ import { doc, setDoc } from "firebase/firestore";
 import { v4 } from "uuid";
 
 import { ICreateTweetRequest } from "@/entities/tweet/types";
-import { client, db } from "@/shared/api/firebase/instance";
+import { client, db } from "@/shared/api/firebase";
 import { uploadFile } from "@/shared/api/storage/uploadFile";
 export const postTweet = async (data: ICreateTweetRequest) => {
   try {

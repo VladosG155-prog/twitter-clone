@@ -1,7 +1,7 @@
 import { call, put, takeEvery } from "redux-saga/effects";
 
-import { sessionSlice } from "@/entities/session";
-import { LOGOUT } from "@/entities/session/model/actions";
+import { sessionSlice } from "@/entities/session/";
+import { LOGOUT } from "@/entities/session/";
 
 import { logoutUser } from "../../api/logoutUser";
 

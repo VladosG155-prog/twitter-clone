@@ -1,9 +1,9 @@
 import { PayloadAction } from "@reduxjs/toolkit";
 import { call, put, takeEvery } from "redux-saga/effects";
 
-import { appSlice } from "@/entities/app/model/slice";
-import { sessionSlice } from "@/entities/session";
-import { ISLOGGEDIN, LOGIN } from "@/entities/session/model/actions";
+import { ISLOGGEDIN, LOGIN } from "@/entities/session";
+import { sessionSlice } from "@/entities/session/";
+import { globalSlice } from "@/shared/lib/globalSlice";
 
 import { loginUser } from "../../api/loginUser";
 
@@ -18,7 +18,7 @@ export function* login(
   } catch (error) {
     if (error instanceof Error) {
       yield put(
-        appSlice.actions.addToast({ type: "error", text: error.message })
+        globalSlice.actions.addToast({ type: "error", text: error.message })
       );
     }
     console.error("error", error);

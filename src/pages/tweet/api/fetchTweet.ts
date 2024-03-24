@@ -2,7 +2,7 @@ import { Timestamp } from "firebase/firestore";
 
 import { IUser } from "@/entities/session/types";
 import { ITweet } from "@/entities/tweet/types";
-import { db } from "@/shared/api/firebase/instance";
+import { db } from "@/shared/api/firebase";
 
 export const fetchTweet = async (tweetId: string) => {
   const postSnapshot = await db.collection("tweets").doc(tweetId).get();

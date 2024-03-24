@@ -1,6 +1,6 @@
-import { REGISTRATION } from "@/entities/session/model/actions";
-import { IRegistrationFormData } from "@/features/authentication/registration/types";
-import { RegistrationForm } from "@/features/authentication/registration/ui/RegistrationForm";
+import { REGISTRATION } from "@/entities/session/";
+import { RegistrationForm } from "@/features/authentication/";
+import { IRegistrationFormData } from "@/features/authentication/";
 import { useAppDispatch } from "@/shared/model/hooks";
 import { Icon } from "@/shared/ui/";
 

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import { ITweet } from "@/entities/tweet/types";
-import { TweetCard } from "@/entities/tweet/ui/TweetCard";
+import { TweetCard } from "@/entities/tweet/";
+import { ITweet } from "@/entities/tweet/";
 import { Skeleton } from "@/shared/ui/";
 import { PageHeader } from "@/widgets/";
 

@@ -1,7 +1,7 @@
 import { FC, useEffect } from "react";
 import classNames from "classnames";
 
-import { appSlice } from "@/entities/app/model/slice";
+import { globalSlice } from "@/shared/lib/globalSlice";
 import { useAppDispatch } from "@/shared/model/hooks";
 
 import { IToastProps } from "./types";
@@ -11,7 +11,7 @@ export const Toast: FC<IToastProps> = ({ text, type, id }) => {
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      dispatch(appSlice.actions.removeToast(id));
+      dispatch(globalSlice.actions.removeToast(id));
     }, 2000);
 
     return () => clearTimeout(timeout);

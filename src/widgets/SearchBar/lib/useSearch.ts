@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { client } from "@/shared/api/firebase/instance";
+import { client } from "@/shared/api/firebase";
 
 export const useSearch = <T>(
   searchValue: string,

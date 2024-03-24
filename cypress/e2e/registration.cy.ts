@@ -2,12 +2,8 @@ describe("registration spec", () => {
   beforeEach(() => {
     indexedDB.deleteDatabase("firebaseLocalStorageDb");
   });
-  beforeEach(() => {
-    cy.intercept("POST", "identitytoolkit.googleapis.com/*", (req) => {
-      req.headers["Custom-My-Header"] = "allo";
-    });
-  });
   it("show errors when fields inavalid", () => {
+    cy.wait(2500);
     cy.visit("/registration");
     cy.get("button").click().should("be.disabled");
   });
@@ -22,6 +18,12 @@ describe("registration spec", () => {
     cy.get('input[name="tel"]').type("+375297684465");
     cy.get('input[name="name"]').type("Васик");
     cy.get("button").click();
-    cy.visit("/auth");
+  });
+  after(() => {
+    before(() => {
+      cy.exec(
+        "curl -H 'Authorization: Bearer owner' -X DELETE http://localhost:9099/emulator/v1/projects/twitter-clome-f00c1/accounts"
+      );
+    });
   });
 });

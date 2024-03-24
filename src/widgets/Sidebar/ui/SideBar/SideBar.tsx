@@ -2,12 +2,12 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import classNames from "classnames";
 
-import { Logout } from "@/features/authentication/logout/ui/Logout";
-import { TweetInput } from "@/features/tweet/addTweet/ui/TweetInput";
+import { Logout } from "@/features/authentication/";
+import { TweetInput } from "@/features/tweet/";
 import { SCREEN } from "@/shared/const/screens";
 import { useMediaQuery } from "@/shared/lib/hooks/useMediaQuery";
 import { Button, Modal } from "@/shared/ui";
-import { Icon } from "@/shared/ui/Icon/Icon";
+import { Icon } from "@/shared/ui/";
 
 import { links } from "../../config";
 
@@ -15,6 +15,10 @@ export const SideBar = () => {
   const [isShowTweetModal, setIsShowTweetModal] = useState(false);
 
   const isTablet = useMediaQuery(SCREEN.TABLET);
+
+  const handleClickTweet = () => {
+    setIsShowTweetModal((prev) => !prev);
+  };
 
   return (
     <div className="col-span-2 pt-8 md:flex md:flex-col md:items-center pl-3">
@@ -44,17 +48,10 @@ export const SideBar = () => {
       ))}
       {!isTablet && (
         <>
-          <Modal
-            onClose={() => setIsShowTweetModal(false)}
-            isOpen={isShowTweetModal}
-          >
-            <TweetInput onClose={() => setIsShowTweetModal(false)} />
+          <Modal onClose={handleClickTweet} isOpen={isShowTweetModal}>
+            <TweetInput onClose={handleClickTweet} />
           </Modal>
-          <Button
-            variant="primary"
-            text="Tweet"
-            onClick={() => setIsShowTweetModal(true)}
-          />
+          <Button variant="primary" text="Tweet" onClick={handleClickTweet} />
           <Logout />
         </>
       )}

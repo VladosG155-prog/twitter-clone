@@ -1,7 +1,7 @@
 import { FC } from "react";
 
-import { appSlice } from "@/entities/app/model/slice";
 import { THEME } from "@/shared/const/theme";
+import { globalSlice } from "@/shared/lib/globalSlice";
 import { useAppDispatch, useAppSelector } from "@/shared/model/hooks";
 import { Switch } from "@/shared/ui/";
 
@@ -14,10 +14,10 @@ export const PageHeader: FC<IPageHeaderProps> = ({ children }) => {
 
   const changeTheme = () => {
     if (theme === THEME.LIGHT) {
-      dispatch(appSlice.actions.changeTheme(THEME.DARK));
+      dispatch(globalSlice.actions.changeTheme(THEME.DARK));
       localStorage.setItem("theme", THEME.DARK);
     } else {
-      dispatch(appSlice.actions.changeTheme(THEME.LIGHT));
+      dispatch(globalSlice.actions.changeTheme(THEME.LIGHT));
       localStorage.setItem("theme", THEME.LIGHT);
     }
   };

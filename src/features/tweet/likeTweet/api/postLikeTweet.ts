@@ -1,6 +1,6 @@
 import { arrayRemove, arrayUnion } from "firebase/firestore";
 
-import { db } from "@/shared/api/firebase/instance";
+import { db } from "@/shared/api/firebase";
 
 export const postLikeTweet = async (userId: string, postId: string) => {
   const tweetItem = db.collection("tweets").doc(postId);

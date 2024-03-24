@@ -1,7 +1,7 @@
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { addDoc, collection, updateDoc } from "firebase/firestore";
 
-import { auth, client, db } from "@/shared/api/firebase/instance";
+import { auth, client, db } from "@/shared/api/firebase";
 import { generateSlug } from "@/shared/lib/generateRandomProfileId/randomProfileId";
 
 import { IRegistrationFormData } from "../registration/types";
